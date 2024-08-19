@@ -14,9 +14,8 @@ struct _6e5d_vec_Vec{
 };
 void _6e5d_vec_init(_6e5d_vec_Vec (*v),size_t size);
 void _6e5d_vec_deinit(_6e5d_vec_Vec (*v));
-void (*_6e5d_vec_offset(_6e5d_vec_Vec (*v),size_t pos));
+void (*offset(_6e5d_vec_Vec (*v),size_t pos));
 void _6e5d_vec_fit(_6e5d_vec_Vec (*v));
-void (*_6e5d_vec_end(_6e5d_vec_Vec (*v)));
 void (*_6e5d_vec_last(_6e5d_vec_Vec (*v)));
 void _6e5d_vec_reserve(_6e5d_vec_Vec (*v),size_t upcoming);
 void _6e5d_vec_resize(_6e5d_vec_Vec (*v),size_t newlen);
@@ -36,16 +35,13 @@ void _6e5d_vec_init(_6e5d_vec_Vec (*v),size_t size){
 void _6e5d_vec_deinit(_6e5d_vec_Vec (*v)){
 	free((v->p));
 }
-void (*_6e5d_vec_offset(_6e5d_vec_Vec (*v),size_t pos)){
+void (*offset(_6e5d_vec_Vec (*v),size_t pos)){
 	return ((void (*))(((uint8_t (*))(v->p))+(pos*(v->size))));
 }
 void _6e5d_vec_fit(_6e5d_vec_Vec (*v)){
 	((v->p)=realloc((v->p),((v->size)*(v->len))));
 	assert((NULL!=(v->p)));
 	((v->capacity)=(v->len));
-}
-void (*_6e5d_vec_end(_6e5d_vec_Vec (*v))){
-	return ((void (*))(((uint8_t (*))(v->p))+((v->size)*(v->len))));
 }
 void (*_6e5d_vec_last(_6e5d_vec_Vec (*v))){
 	if((0==(v->len))){
@@ -75,7 +71,7 @@ void _6e5d_vec_resize(_6e5d_vec_Vec (*v),size_t newlen){
 }
 void _6e5d_vec_extend(_6e5d_vec_Vec (*v),void (*data),size_t len){
 	_6e5d_vec_reserve(v,len);
-	memcpy(_6e5d_vec_end(v),data,((v->size)*len));
+	memcpy(((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))),data,((v->size)*len));
 	((v->len)+=len);
 }
 void _6e5d_vec_debug(_6e5d_vec_Vec (*v)){
@@ -93,8 +89,8 @@ void _6e5d_vec_pushv(_6e5d_vec_Vec (*v),void (*val)){
 void (*_6e5d_vec_insert(_6e5d_vec_Vec (*v),size_t pos)){
 	assert((pos<=(v->len)));
 	_6e5d_vec_reserve(v,1);
-	auto uint8_t (*p_ins) = _6e5d_vec_offset(v,pos);
-	for(auto uint8_t (*p) = _6e5d_vec_end(v);(p>p_ins);(p-=(v->size))){
+	auto uint8_t (*p_ins) = ((void (*))(((uint8_t (*))(v->p))+(pos*(v->size))));
+	for(auto uint8_t (*p) = ((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size))));(p>p_ins);(p-=(v->size))){
 		memcpy(p,(p-(v->size)),(v->size));
 	};
 	((v->len)+=1);
@@ -105,7 +101,7 @@ void _6e5d_vec_insertv(_6e5d_vec_Vec (*v),size_t pos,void (*val)){
 	memcpy(p,val,(v->size));
 }
 void _6e5d_vec_srmi(_6e5d_vec_Vec (*v),size_t idx){
-	auto void (*p) = _6e5d_vec_offset(v,idx);
+	auto void (*p) = ((void (*))(((uint8_t (*))(v->p))+(idx*(v->size))));
 	if((idx<((v->len)-1))){
 		auto void (*lst) = _6e5d_vec_last(v);
 		assert((NULL!=_6e5d_vec_last));

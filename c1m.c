@@ -5,10 +5,19 @@
 #include<stdbool.h>
 #include<stdint.h>
 #include<assert.h>
+typedef union _6e5d_c2r_Value _6e5d_c2r_Value;
 typedef struct _6e5d_vec_Vec _6e5d_vec_Vec;
 typedef struct _6e5d_hashmap_Hashmap _6e5d_hashmap_Hashmap;
-typedef union _6e5d_c2r_Value _6e5d_c2r_Value;
 typedef struct _6e5d_c2r_Object _6e5d_c2r_Object;
+union _6e5d_c2r_Value{
+	int64_t i64;
+	uint64_t u64;
+	float f32;
+	void (*pfn)(void );
+	_6e5d_vec_Vec (*v);
+	_6e5d_hashmap_Hashmap (*map);
+	uint8_t (*lbuf);
+};
 struct _6e5d_vec_Vec{
 	size_t size;
 	size_t capacity;
@@ -24,15 +33,6 @@ struct _6e5d_hashmap_Hashmap{
 	uint8_t bitshift;
 	uint64_t (*hasher)(void (*),size_t );
 	bool (*eq)(void (*),void (*),size_t );
-};
-union _6e5d_c2r_Value{
-	int64_t i64;
-	uint64_t u64;
-	float f32;
-	void (*pfn)(void );
-	_6e5d_vec_Vec (*v);
-	_6e5d_hashmap_Hashmap (*map);
-	uint8_t (*lbuf);
 };
 struct _6e5d_c2r_Object{
 	_6e5d_c2r_Value value;
@@ -815,6 +815,13 @@ _6e5d_c2r_Object (*procfn(_6e5d_c2r_Object (*l),_6e5d_c2r_Object (*file),_6e5d_c
 					_6e5d_c2r_decref(_vartmp);
 					if(_6e5d_c2prim_toBool(_6e5d_c2prim_lt(idx,_6e5d_c2prim_fromU64(2)))){
 						{
+							_6e5d_c2r_decref(ll);
+							continue;
+						};
+					};
+					if(_6e5d_c2prim_toBool(_6e5d_c2prim_eq(ll,_6e5d_c2prim_fromBuf("_REST",5)))){
+						{
+							_6e5d_c2r_check(_6e5d_c1str_append(l,rest));
 							_6e5d_c2r_decref(ll);
 							continue;
 						};

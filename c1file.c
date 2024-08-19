@@ -11,10 +11,19 @@
 #include<sys/stat.h>
 #include<limits.h>
 #include<sys/file.h>
+typedef union _6e5d_c2r_Value _6e5d_c2r_Value;
 typedef struct _6e5d_vec_Vec _6e5d_vec_Vec;
 typedef struct _6e5d_hashmap_Hashmap _6e5d_hashmap_Hashmap;
-typedef union _6e5d_c2r_Value _6e5d_c2r_Value;
 typedef struct _6e5d_c2r_Object _6e5d_c2r_Object;
+union _6e5d_c2r_Value{
+	int64_t i64;
+	uint64_t u64;
+	float f32;
+	void (*pfn)(void );
+	_6e5d_vec_Vec (*v);
+	_6e5d_hashmap_Hashmap (*map);
+	uint8_t (*lbuf);
+};
 struct _6e5d_vec_Vec{
 	size_t size;
 	size_t capacity;
@@ -30,15 +39,6 @@ struct _6e5d_hashmap_Hashmap{
 	uint8_t bitshift;
 	uint64_t (*hasher)(void (*),size_t );
 	bool (*eq)(void (*),void (*),size_t );
-};
-union _6e5d_c2r_Value{
-	int64_t i64;
-	uint64_t u64;
-	float f32;
-	void (*pfn)(void );
-	_6e5d_vec_Vec (*v);
-	_6e5d_hashmap_Hashmap (*map);
-	uint8_t (*lbuf);
 };
 struct _6e5d_c2r_Object{
 	_6e5d_c2r_Value value;
@@ -60,7 +60,6 @@ _6e5d_c2r_Object (*_6e5d_c2prim_div(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2
 _6e5d_c2r_Object (*_6e5d_c2prim_mod(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_shl(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_shr(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
-_6e5d_c2r_Object (*_6e5d_c2prim_neg(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_not(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_lt(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_gt(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
@@ -68,6 +67,10 @@ _6e5d_c2r_Object (*_6e5d_c2prim_le(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)
 _6e5d_c2r_Object (*_6e5d_c2prim_ge(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_eq(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_ne(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
+_6e5d_c2r_Object (*_6e5d_c2prim_and(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
+_6e5d_c2r_Object (*_6e5d_c2prim_or(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
+_6e5d_c2r_Object (*_6e5d_c2prim_xor(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
+_6e5d_c2r_Object (*_6e5d_c2prim_neg(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_isBytes(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_isU64(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_isI64(_6e5d_c2r_Object (*obj)));
@@ -89,6 +92,7 @@ float _6e5d_c2prim_toF32(_6e5d_c2r_Object (*obj));
 bool _6e5d_c2prim_toBool(_6e5d_c2r_Object (*obj));
 _6e5d_c2r_Object (*_6e5d_c2prim_asI64(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_asU64(_6e5d_c2r_Object (*obj)));
+_6e5d_c2r_Object (*_6e5d_c2prim_asF32(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_asBytes(_6e5d_c2r_Object (*obj)));
 _6e5d_c2r_Object (*_6e5d_c2prim_asList(_6e5d_c2r_Object (*obj)));
 void _6e5d_c2prim_listSet(_6e5d_c2r_Object (*obj),size_t index,_6e5d_c2r_Object (*value));

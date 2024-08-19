@@ -8,8 +8,8 @@
 #include<unistd.h>
 typedef struct _6e5d_hashmap_Hashmap _6e5d_hashmap_Hashmap;
 typedef struct _6e5d_hashmap_Iter _6e5d_hashmap_Iter;
-typedef struct _6e5d_vec_Vec _6e5d_vec_Vec;
 typedef union _6e5d_c2r_Value _6e5d_c2r_Value;
+typedef struct _6e5d_vec_Vec _6e5d_vec_Vec;
 typedef struct _6e5d_c2r_Object _6e5d_c2r_Object;
 struct _6e5d_hashmap_Hashmap{
 	size_t size_key;
@@ -27,12 +27,6 @@ struct _6e5d_hashmap_Iter{
 	void (*value);
 	uint8_t (*end);
 };
-struct _6e5d_vec_Vec{
-	size_t size;
-	size_t capacity;
-	size_t len;
-	void (*p);
-};
 union _6e5d_c2r_Value{
 	int64_t i64;
 	uint64_t u64;
@@ -41,6 +35,12 @@ union _6e5d_c2r_Value{
 	_6e5d_vec_Vec (*v);
 	_6e5d_hashmap_Hashmap (*map);
 	uint8_t (*lbuf);
+};
+struct _6e5d_vec_Vec{
+	size_t size;
+	size_t capacity;
+	size_t len;
+	void (*p);
 };
 struct _6e5d_c2r_Object{
 	_6e5d_c2r_Value value;
@@ -62,9 +62,7 @@ _6e5d_c2r_Object (*_6e5d_c2r_incref(_6e5d_c2r_Object (*po)));
 _6e5d_hashmap_Hashmap (*_6e5d_c2r_asMap(_6e5d_c2r_Object (*po)));
 void _6e5d_c2r_deconly(_6e5d_c2r_Object (*po));
 void _6e5d_vec_init(_6e5d_vec_Vec (*v),size_t size);
-void (*_6e5d_vec_offset(_6e5d_vec_Vec (*v),size_t pos));
 void _6e5d_vec_resize(_6e5d_vec_Vec (*v),size_t newlen);
-void (*_6e5d_vec_end(_6e5d_vec_Vec (*v)));
 _6e5d_c2r_Object (*_6e5d_c2prim_add(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_sub(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
 _6e5d_c2r_Object (*_6e5d_c2prim_mul(_6e5d_c2r_Object (*v1),_6e5d_c2r_Object (*v2)));
@@ -628,13 +626,13 @@ void _6e5d_c2prim_resizeList(_6e5d_c2r_Object (*obj),size_t len){
 	auto size_t oldlen = (v->len);
 	if((oldlen>len)){
 		for(auto size_t idx = len;(idx<oldlen);(idx+=1)){
-			auto _6e5d_c2r_Object (*(*p)) = _6e5d_vec_offset(v,idx);
+			auto _6e5d_c2r_Object (*(*p)) = ((void (*))(((uint8_t (*))(v->p))+(idx*(v->size))));
 			_6e5d_c2r_decref((*p));
 		};
 	};
 	_6e5d_vec_resize(v,len);
 	if((oldlen<len)){
-		memset(_6e5d_vec_offset(v,oldlen),0,((v->size)*(len-oldlen)));
+		memset(((void (*))(((uint8_t (*))(v->p))+(oldlen*(v->size)))),0,((v->size)*(len-oldlen)));
 	};
 }
 _6e5d_c2r_Object (*_6e5d_c2prim_resize(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object (*vlen))){
@@ -658,7 +656,7 @@ _6e5d_c2r_Object (*_6e5d_c2prim_resize(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object 
 void _6e5d_c2prim_listSet(_6e5d_c2r_Object (*obj),size_t index,_6e5d_c2r_Object (*value)){
 	auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 	assert((index<(v->len)));
-	auto _6e5d_c2r_Object (*(*p)) = _6e5d_vec_offset(v,index);
+	auto _6e5d_c2r_Object (*(*p)) = ((void (*))(((uint8_t (*))(v->p))+(index*(v->size))));
 	_6e5d_c2r_decref((*p));
 	_6e5d_c2r_incref(value);
 	((*p)=value);
@@ -667,7 +665,7 @@ void bytesSet(_6e5d_c2r_Object (*obj),size_t index,_6e5d_c2r_Object (*value)){
 	auto uint64_t val = _6e5d_c2prim_toU64(value);
 	auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 	assert((index<(v->len)));
-	auto uint8_t (*p) = _6e5d_vec_offset(v,index);
+	auto uint8_t (*p) = ((void (*))(((uint8_t (*))(v->p))+(index*(v->size))));
 	((*p)=((uint8_t )val));
 }
 _6e5d_c2r_Object (*fromkey(_6e5d_c2r_Object (*obj))){
@@ -685,7 +683,7 @@ _6e5d_c2r_Object (*map2list(_6e5d_hashmap_Hashmap (*map))){
 	_6e5d_vec_resize(v,len);
 	auto size_t idx = 0;
 	for(auto _6e5d_hashmap_Iter it = _6e5d_hashmap_iter(map);_6e5d_hashmap_next(map,(&it));){
-		auto _6e5d_c2r_Object (*(*p)) = _6e5d_vec_offset(v,idx);
+		auto _6e5d_c2r_Object (*(*p)) = ((void (*))(((uint8_t (*))(v->p))+(idx*(v->size))));
 		((*p)=fromkey(((_6e5d_c2r_Object (*))(it.key))));
 		(((*p)->rc)=1);
 		(idx+=1);
@@ -802,7 +800,7 @@ _6e5d_c2r_Object (*listGet(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object (*oindex))){
 	auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 	auto size_t index = toSizet(oindex);
 	assert((index<(v->len)));
-	auto _6e5d_c2r_Object (*(*p)) = _6e5d_vec_offset(v,index);
+	auto _6e5d_c2r_Object (*(*p)) = ((void (*))(((uint8_t (*))(v->p))+(index*(v->size))));
 	return (*p);
 }
 _6e5d_c2r_Object (*bytesGet(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object (*oindex))){
@@ -810,7 +808,7 @@ _6e5d_c2r_Object (*bytesGet(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object (*oindex)))
 	auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 	auto size_t index = toSizet(oindex);
 	assert((index<(v->len)));
-	auto uint8_t (*p) = _6e5d_vec_offset(v,index);
+	auto uint8_t (*p) = ((void (*))(((uint8_t (*))(v->p))+(index*(v->size))));
 	return _6e5d_c2prim_fromU64((*p));
 }
 _6e5d_c2r_Object (*mapGet(_6e5d_c2r_Object (*obj),_6e5d_c2r_Object (*index))){
@@ -1114,7 +1112,7 @@ _6e5d_c2r_Object (*_6e5d_c2prim_printobj(int fd,_6e5d_c2r_Object (*obj))){
 		dprintf(fd,"[");
 		auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 		auto bool first = true;
-		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<_6e5d_vec_end(v));(it+=1)){
+		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))));(it+=1)){
 			if(first){
 				(first=false);
 			}else if(true){
@@ -1160,7 +1158,7 @@ _6e5d_c2r_Object (*_6e5d_c2prim_printdbg(int fd,_6e5d_c2r_Object (*obj))){
 		dprintf(fd,"[");
 		auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(obj);
 		auto bool first = true;
-		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<_6e5d_vec_end(v));(it+=1)){
+		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))));(it+=1)){
 			if(first){
 				(first=false);
 			}else if(true){

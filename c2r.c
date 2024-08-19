@@ -31,7 +31,6 @@ struct _6e5d_hashmap_Iter{
 	uint8_t (*end);
 };
 void _6e5d_vec_deinit(_6e5d_vec_Vec (*v));
-void (*_6e5d_vec_end(_6e5d_vec_Vec (*v)));
 void _6e5d_hashmap_deinit(_6e5d_hashmap_Hashmap (*map));
 bool _6e5d_hashmap_next(_6e5d_hashmap_Hashmap (*p),_6e5d_hashmap_Iter (*it));
 _6e5d_hashmap_Iter _6e5d_hashmap_iter(_6e5d_hashmap_Hashmap (*p));
@@ -114,7 +113,7 @@ void deinit(_6e5d_c2r_Object (*po)){
 		free(v);
 	}else if((5==(po->ty))){
 		auto _6e5d_vec_Vec (*v) = _6e5d_c2r_asVec(po);
-		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<_6e5d_vec_end(v));(it+=1)){
+		for(auto _6e5d_c2r_Object (*(*it)) = (v->p);(((void (*))it)<((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))));(it+=1)){
 			_6e5d_c2r_decref((*it));
 		};
 		_6e5d_vec_deinit(v);
