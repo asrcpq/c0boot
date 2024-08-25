@@ -6,7 +6,6 @@
 #include<stdint.h>
 #include<assert.h>
 #include<time.h>
-#include<time.h>
 typedef struct _6e5d_vec_lib_Vec _6e5d_vec_lib_Vec;
 typedef struct _6e5d_hashmap_lib_Iter _6e5d_hashmap_lib_Iter;
 typedef struct _6e5d_hashmap_lib_Hashmap _6e5d_hashmap_lib_Hashmap;
@@ -149,7 +148,7 @@ void _6e5d_c0date_lib_usleep(uint64_t u);
 uint64_t _6e5d_c0date_lib_now();
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_now());
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_sleep(_6e5d_c2r_lib_Object (*ou)));
-_6e5d_c2r_lib_Object (*fmttime2(uint64_t u,char (*fmt)));
+static _6e5d_c2r_lib_Object (*fmttime2(uint64_t u,char (*fmt)));
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_fmttime(_6e5d_c2r_lib_Object (*ot),_6e5d_c2r_lib_Object (*ofmt)));
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_now()){
 	return _6e5d_c2prim_lib_fromU64(_6e5d_c0date_lib_now());
@@ -160,7 +159,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_sleep(_6e5d_c2r_lib_Object (*ou))){
 	_6e5d_c0date_lib_usleep(u);
 	return NULL;
 }
-_6e5d_c2r_lib_Object (*fmttime2(uint64_t u,char (*fmt))){
+static _6e5d_c2r_lib_Object (*fmttime2(uint64_t u,char (*fmt))){
 	auto char s[32];
 	if((NULL==fmt)){
 		return NULL;
