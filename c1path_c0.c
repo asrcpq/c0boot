@@ -11,65 +11,6 @@
 #include<unistd.h>
 #include<limits.h>
 #include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<time.h>
-#include<time.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<errno.h>
-#include<unistd.h>
-#include<sys/wait.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
 typedef struct _6e5d_vec_lib_Vec _6e5d_vec_lib_Vec;
 typedef struct _6e5d_hashmap_lib_Iter _6e5d_hashmap_lib_Iter;
 typedef struct _6e5d_hashmap_lib_Hashmap _6e5d_hashmap_lib_Hashmap;
@@ -208,34 +149,8 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_rc(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_printobj(FILE (*f),_6e5d_c2r_lib_Object (*obj)));
 void _6e5d_c2prim_lib_assign(_6e5d_c2r_lib_Object (*(*dst)),_6e5d_c2r_lib_Object (*src));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_abort());
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_contains(_6e5d_c2r_lib_Object (*li),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_startswith(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_endswith(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rstrip(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lstripped(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_stripped(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_pop(_6e5d_c2r_lib_Object (*l)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_push(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Object (*x)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_reverse(_6e5d_c2r_lib_Object (*a)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_splitws(_6e5d_c2r_lib_Object (*s)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_splitoff(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*idx)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_split(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lsplit(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*times)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rsplit(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*times)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_bufcopy(_6e5d_c2r_lib_Object (*f),_6e5d_c2r_lib_Object (*t)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_slice(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*i1),_6e5d_c2r_lib_Object (*i2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_append(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_join2(_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*lists)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_join(_6e5d_c2r_lib_Object (*lists)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_swaprm(_6e5d_c2r_lib_Object (*li),_6e5d_c2r_lib_Object (*idx)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lower(_6e5d_c2r_lib_Object (*s)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_sort(_6e5d_c2r_lib_Object (*array),_6e5d_c2r_lib_Object (*op)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_ledump(_6e5d_c2r_lib_Object (*v),_6e5d_c2r_lib_Object (*buf)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_n2h(_6e5d_c2r_lib_Object (*n)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_hexdump(_6e5d_c2r_lib_Object (*b)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lfind(_6e5d_c2r_lib_Object (*h),_6e5d_c2r_lib_Object (*n)));
+size_t _6e5d_c0path_lib_normalize(char (*path));
+void _6e5d_c0path_lib_normrel(char (*rel));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rename(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mkdir0(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_unlink(_6e5d_c2r_lib_Object (*path)));
@@ -248,57 +163,151 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isreg(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isdir(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_exist(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mtime(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_basename(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_parent(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_mkdir1(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_pmkdir(_6e5d_c2r_lib_Object (*path0)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_norm(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_rel(_6e5d_c2r_lib_Object (*abs),_6e5d_c2r_lib_Object (*r)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_runmake(_6e5d_c2r_lib_Object (*paths)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_dirmake(_6e5d_c2r_lib_Object (*paths)));
-int main(int _c1argc,char (*(*_c1argv)));
-int main(int _c1argc,char (*(*_c1argv))){
-	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
-	_6e5d_c2r_lib_incref(args);
-	_6e5d_c2prim_lib_resizeList(args,((size_t )_c1argc));
-	for(auto size_t idx = 0;(idx<_c1argc);(idx+=1)){
-		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(_c1argv[idx],strlen(_c1argv[idx])));
+static thread_local char pathbuf[PATH_MAX];
+static thread_local char pathbuf2[PATH_MAX];
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rename(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst))){
+	auto int64_t cstrlen1 = _6e5d_c2prim_lib_cstr(src,pathbuf,PATH_MAX);
+	auto int64_t cstrlen2 = _6e5d_c2prim_lib_cstr(dst,pathbuf2,PATH_MAX);
+	_6e5d_c2r_lib_chk((&src));
+	_6e5d_c2r_lib_chk((&dst));
+	if((cstrlen1<0)){
+		return NULL;
+	}else if((cstrlen2<0)){
+		return NULL;
 	};
-	auto _6e5d_c2r_lib_Object (*_return) = NULL;
-	((void )_return);
-	auto _6e5d_c2r_lib_Object (*paths) = NULL;
-	auto _6e5d_c2r_lib_Object (*ismk) = NULL;
-	auto _6e5d_c2r_lib_Object (*idx) = NULL;
-	auto _6e5d_c2r_lib_Object (*arg) = NULL;
-	_6e5d_c2prim_lib_assign((&paths),_6e5d_c2prim_lib_listInit());
-	_6e5d_c2prim_lib_assign((&ismk),_6e5d_c2prim_lib_fromFn(false));
-	_6e5d_c2prim_lib_assign((&idx),NULL);
-	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(idx))))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_fromU64(0));
-		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
-		};
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(args)))){
+	assert((0==rename(pathbuf,pathbuf2)));
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mkdir0(_6e5d_c2r_lib_Object (*path))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(path,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&path));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromBool((0==mkdir(pathbuf,0777)));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_unlink(_6e5d_c2r_lib_Object (*path))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(path,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&path));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	if((0!=unlink(pathbuf))){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(0);
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rmdir(_6e5d_c2r_lib_Object (*path))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(path,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&path));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	if((0>rmdir(pathbuf))){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(0);
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_norm2(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	auto size_t len1 = _6e5d_c0path_lib_normalize(pathbuf);
+	if((len1==0)){
+		return NULL;
+	};
+	auto _6e5d_c2r_lib_Object (*ret) = _6e5d_c2prim_lib_fromBuf(pathbuf,len1);
+	return ret;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_cwd()){
+	assert((NULL!=getcwd(pathbuf,PATH_MAX)));
+	auto _6e5d_c2r_lib_Object (*path) = _6e5d_c2prim_lib_fromBuf(pathbuf,strlen(pathbuf));
+	return path;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_chdir(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	chdir(pathbuf);
+	_6e5d_c2r_lib_chk((&obj));
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_ls(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	auto DIR (*dp) = opendir(pathbuf);
+	if((NULL==dp)){
+		return NULL;
+	};
+	auto _6e5d_c2r_lib_Object (*ret) = _6e5d_c2prim_lib_listInit();
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(ret);
+	while(true){
+		auto struct dirent (*ep) = readdir(dp);
+		if((ep==NULL)){
 			break;
 		};
-		_6e5d_c2prim_lib_assign((&arg),_6e5d_c2prim_lib_getItem(args,idx));
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(idx,_6e5d_c2prim_lib_fromU64(0)))){
+		auto char (*name) = (ep->d_name);
+		if(((0==strcmp(name,"."))||(0==strcmp(name,"..")))){
 			continue;
 		};
-		_6e5d_c2prim_lib_assign((&ismk),_6e5d_c1path_fn_isreg(arg));
-		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(paths,_6e5d_c1path_c1_norm(arg)));
+		auto _6e5d_c2r_lib_Object (*new) = _6e5d_c2prim_lib_fromBuf(name,strlen(name));
+		_6e5d_c2r_lib_incref(new);
+		_6e5d_vec_lib_pushv(v,(&new));
 	};
-	if(_6e5d_c2prim_lib_toBool(ismk)){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_runmake(paths));
-	}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_dirmake(paths));
+	closedir(dp);
+	return ret;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isreg(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
 	};
-	_6e5d_c2r_lib_decref(args);
-	_6e5d_c2r_lib_decref(paths);
-	_6e5d_c2r_lib_decref(ismk);
-	_6e5d_c2r_lib_decref(idx);
-	_6e5d_c2r_lib_decref(arg);
+	auto struct stat st;
+	auto int ok = lstat(pathbuf,(&st));
+	if((0>ok)){
+		return _6e5d_c2prim_lib_fromU64(0);
+	};
+	return _6e5d_c2prim_lib_fromU64((0!=S_ISREG((st.st_mode))));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isdir(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	auto struct stat st;
+	auto int ok = lstat(pathbuf,(&st));
+	if((0>ok)){
+		return _6e5d_c2prim_lib_fromU64(0);
+	};
+	return _6e5d_c2prim_lib_fromU64((0!=S_ISDIR((st.st_mode))));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_exist(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromBool((!access(pathbuf,F_OK)));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mtime(_6e5d_c2r_lib_Object (*obj))){
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(obj,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&obj));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	auto struct stat st;
+	auto int ok = lstat(pathbuf,(&st));
+	if((0>ok)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )(st.st_mtime)));
 }

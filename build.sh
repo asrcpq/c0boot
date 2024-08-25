@@ -1,10 +1,9 @@
 
-CC="gcc --std=c2x -D_POSIX_C_SOURCE=200809L"
+CC="gcc --std=c2x -D_POSIX_C_SOURCE=200809L -Wno-incompatible-pointer-types"
 for file in *.c; do
 	$CC -c -o ${file%.c}.o $file
 done
-for proj in c1m c0c rmake; do
-	mkdir -p root/6e5d/$proj/build
-	$CC -o root/6e5d/$proj/build/main.elf bin/$proj.c *.o
+for proj in c0p c1c0 c0c2 rmake; do
+	$CC -o dist/build/$proj.elf bin/$proj.c *.o
 done
 

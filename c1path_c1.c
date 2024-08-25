@@ -11,65 +11,6 @@
 #include<unistd.h>
 #include<limits.h>
 #include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<time.h>
-#include<time.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<errno.h>
-#include<unistd.h>
-#include<sys/wait.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
 typedef struct _6e5d_vec_lib_Vec _6e5d_vec_lib_Vec;
 typedef struct _6e5d_hashmap_lib_Iter _6e5d_hashmap_lib_Iter;
 typedef struct _6e5d_hashmap_lib_Hashmap _6e5d_hashmap_lib_Hashmap;
@@ -256,24 +197,227 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_norm(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_rel(_6e5d_c2r_lib_Object (*abs),_6e5d_c2r_lib_Object (*r)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_runmake(_6e5d_c2r_lib_Object (*paths)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_dirmake(_6e5d_c2r_lib_Object (*paths)));
-int main(int _c1argc,char (*(*_c1argv)));
-int main(int _c1argc,char (*(*_c1argv))){
-	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
-	_6e5d_c2r_lib_incref(args);
-	_6e5d_c2prim_lib_resizeList(args,((size_t )_c1argc));
-	for(auto size_t idx = 0;(idx<_c1argc);(idx+=1)){
-		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(_c1argv[idx],strlen(_c1argv[idx])));
-	};
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_basename(_6e5d_c2r_lib_Object (*path))){
+	_6e5d_c2r_lib_incref(path);
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
 	((void )_return);
-	auto _6e5d_c2r_lib_Object (*paths) = NULL;
-	auto _6e5d_c2r_lib_Object (*ismk) = NULL;
+	auto _6e5d_c2r_lib_Object (*sp) = NULL;
+	_6e5d_c2prim_lib_assign((&sp),_6e5d_c1str_lib_rsplit(path,_6e5d_c2prim_lib_fromU64(47),_6e5d_c2prim_lib_fromU64(1)));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_le(_6e5d_c2prim_lib_length(sp),_6e5d_c2prim_lib_fromU64(1)))){
+		(_return=NULL);
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(path);
+		_6e5d_c2r_lib_decref(sp);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	(_return=_6e5d_c2prim_lib_getItem(sp,_6e5d_c2prim_lib_fromU64(1)));
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(sp);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(sp);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_parent(_6e5d_c2r_lib_Object (*path))){
+	_6e5d_c2r_lib_incref(path);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*ret) = NULL;
+	auto _6e5d_c2r_lib_Object (*index) = NULL;
+	_6e5d_c2prim_lib_assign((&ret),_6e5d_c2prim_lib_asBytes(path));
+	_6e5d_c2prim_lib_assign((&index),_6e5d_c1str_lib_rindex(ret,_6e5d_c2prim_lib_fromU64(47)));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(index))))){
+		(_return=NULL);
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(path);
+		_6e5d_c2r_lib_decref(ret);
+		_6e5d_c2r_lib_decref(index);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	_6e5d_c2r_lib_check0(_6e5d_c2prim_lib_resize(ret,index));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(ret)))){
+		_6e5d_c2prim_lib_assign((&ret),_6e5d_c2prim_lib_fromBuf("/",1));
+	};
+	(_return=ret);
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(ret);
+	_6e5d_c2r_lib_decref(index);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(ret);
+	_6e5d_c2r_lib_decref(index);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_mkdir1(_6e5d_c2r_lib_Object (*path))){
+	_6e5d_c2r_lib_incref(path);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c1path_fn_exist(path))){
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c1path_fn_isdir(path))){
+			(_return=_6e5d_c2prim_lib_fromU64(1));
+			_6e5d_c2r_lib_incref(_return);
+			_6e5d_c2r_lib_decref(path);
+			_6e5d_c2r_lib_deconly(_return);
+			return _return;
+		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
+			(_return=_6e5d_c2prim_lib_fromU64(0));
+			_6e5d_c2r_lib_incref(_return);
+			_6e5d_c2r_lib_decref(path);
+			_6e5d_c2r_lib_deconly(_return);
+			return _return;
+		};
+	};
+	(_return=_6e5d_c1path_fn_mkdir0(path));
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(path);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_pmkdir(_6e5d_c2r_lib_Object (*path0))){
+	_6e5d_c2r_lib_incref(path0);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*l) = NULL;
+	auto _6e5d_c2r_lib_Object (*path) = NULL;
 	auto _6e5d_c2r_lib_Object (*idx) = NULL;
-	auto _6e5d_c2r_lib_Object (*arg) = NULL;
-	_6e5d_c2prim_lib_assign((&paths),_6e5d_c2prim_lib_listInit());
-	_6e5d_c2prim_lib_assign((&ismk),_6e5d_c2prim_lib_fromFn(false));
+	_6e5d_c2prim_lib_assign((&l),_6e5d_c2prim_lib_length(path0));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),l))){
+		_6e5d_c2prim_lib_abort();
+	};
+	_6e5d_c2prim_lib_assign((&path),_6e5d_c2prim_lib_asBytes(path0));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ne(_6e5d_c2prim_lib_fromU64(47),_6e5d_c2prim_lib_getItem(path,_6e5d_c2prim_lib_sub(l,_6e5d_c2prim_lib_fromU64(1)))))){
+		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(path,_6e5d_c2prim_lib_fromU64(47)));
+	};
+	_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_fromU64(1));
+	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lt(idx,_6e5d_c2prim_lib_length(path)))){
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(47),_6e5d_c2prim_lib_getItem(path,idx)))){
+			_6e5d_c2prim_lib_setItem(path,idx,_6e5d_c2prim_lib_fromU64(0));
+			if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c1path_c1_mkdir1(path)))){
+				(_return=NULL);
+				_6e5d_c2r_lib_incref(_return);
+				_6e5d_c2r_lib_decref(path0);
+				_6e5d_c2r_lib_decref(l);
+				_6e5d_c2r_lib_decref(path);
+				_6e5d_c2r_lib_decref(idx);
+				_6e5d_c2r_lib_deconly(_return);
+				return _return;
+			};
+			_6e5d_c2prim_lib_setItem(path,idx,_6e5d_c2prim_lib_fromU64(47));
+		};
+		_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
+	};
+	(_return=_6e5d_c2prim_lib_fromU64(0));
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(path0);
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(idx);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(path0);
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(idx);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_norm(_6e5d_c2r_lib_Object (*path))){
+	_6e5d_c2r_lib_incref(path);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*path2) = NULL;
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(path)))){
+		(_return=NULL);
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(path);
+		_6e5d_c2r_lib_decref(path2);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	_6e5d_c2prim_lib_assign((&path2),path);
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ne(_6e5d_c2prim_lib_getItem(path,_6e5d_c2prim_lib_fromU64(0)),_6e5d_c2prim_lib_fromU64(47)))){
+		_6e5d_c2prim_lib_assign((&path2),_6e5d_c1path_fn_cwd());
+		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(path2,_6e5d_c2prim_lib_fromU64(47)));
+		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(path2,path));
+	};
+	(_return=_6e5d_c1path_fn_norm2(path2));
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(path2);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(path2);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_rel(_6e5d_c2r_lib_Object (*abs),_6e5d_c2r_lib_Object (*r))){
+	_6e5d_c2r_lib_incref(abs);
+	_6e5d_c2r_lib_incref(r);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*lr) = NULL;
+	auto _6e5d_c2r_lib_Object (*concat) = NULL;
+	_6e5d_c2prim_lib_assign((&lr),_6e5d_c2prim_lib_length(r));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(lr,_6e5d_c2prim_lib_fromU64(0)))){
+		(_return=_6e5d_c1path_c1_norm(abs));
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(abs);
+		_6e5d_c2r_lib_decref(r);
+		_6e5d_c2r_lib_decref(lr);
+		_6e5d_c2r_lib_decref(concat);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(47),_6e5d_c2prim_lib_getItem(r,_6e5d_c2prim_lib_fromU64(0))))){
+		(_return=_6e5d_c1path_c1_norm(r));
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(abs);
+		_6e5d_c2r_lib_decref(r);
+		_6e5d_c2r_lib_decref(lr);
+		_6e5d_c2r_lib_decref(concat);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	_6e5d_c2prim_lib_assign((&concat),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),3),0,abs),1,_6e5d_c2prim_lib_fromBuf("/",1)),2,r)));
+	(_return=_6e5d_c1path_c1_norm(concat));
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(abs);
+	_6e5d_c2r_lib_decref(r);
+	_6e5d_c2r_lib_decref(lr);
+	_6e5d_c2r_lib_decref(concat);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(abs);
+	_6e5d_c2r_lib_decref(r);
+	_6e5d_c2r_lib_decref(lr);
+	_6e5d_c2r_lib_decref(concat);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d))){
+	_6e5d_c2r_lib_incref(d);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*ret) = NULL;
+	auto _6e5d_c2r_lib_Object (*idx) = NULL;
+	auto _6e5d_c2r_lib_Object (*sub) = NULL;
+	_6e5d_c2prim_lib_assign((&ret),_6e5d_c1path_fn_ls(d));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(ret))))){
+		(_return=NULL);
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(d);
+		_6e5d_c2r_lib_decref(ret);
+		_6e5d_c2r_lib_decref(idx);
+		_6e5d_c2r_lib_decref(sub);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
 	_6e5d_c2prim_lib_assign((&idx),NULL);
 	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
 		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(idx))))){
@@ -281,24 +425,84 @@ int main(int _c1argc,char (*(*_c1argv))){
 		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
 			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
 		};
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(args)))){
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(ret)))){
 			break;
 		};
-		_6e5d_c2prim_lib_assign((&arg),_6e5d_c2prim_lib_getItem(args,idx));
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(idx,_6e5d_c2prim_lib_fromU64(0)))){
-			continue;
-		};
-		_6e5d_c2prim_lib_assign((&ismk),_6e5d_c1path_fn_isreg(arg));
-		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(paths,_6e5d_c1path_c1_norm(arg)));
+		_6e5d_c2prim_lib_assign((&sub),_6e5d_c2prim_lib_getItem(ret,idx));
+		_6e5d_c2prim_lib_setItem(ret,idx,_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),3),0,d),1,_6e5d_c2prim_lib_fromBuf("/",1)),2,sub)));
 	};
-	if(_6e5d_c2prim_lib_toBool(ismk)){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_runmake(paths));
-	}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_dirmake(paths));
-	};
-	_6e5d_c2r_lib_decref(args);
-	_6e5d_c2r_lib_decref(paths);
-	_6e5d_c2r_lib_decref(ismk);
+	(_return=ret);
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(d);
+	_6e5d_c2r_lib_decref(ret);
 	_6e5d_c2r_lib_decref(idx);
-	_6e5d_c2r_lib_decref(arg);
+	_6e5d_c2r_lib_decref(sub);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(d);
+	_6e5d_c2r_lib_decref(ret);
+	_6e5d_c2r_lib_decref(idx);
+	_6e5d_c2r_lib_decref(sub);
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d))){
+	_6e5d_c2r_lib_incref(d);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*ret) = NULL;
+	auto _6e5d_c2r_lib_Object (*ds) = NULL;
+	auto _6e5d_c2r_lib_Object (*_) = NULL;
+	auto _6e5d_c2r_lib_Object (*sub) = NULL;
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c1path_fn_isreg(d))){
+		(_return=_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),1),0,d));
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(d);
+		_6e5d_c2r_lib_decref(ret);
+		_6e5d_c2r_lib_decref(ds);
+		_6e5d_c2r_lib_decref(_);
+		_6e5d_c2r_lib_decref(sub);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c1path_fn_isdir(d)))){
+		(_return=_6e5d_c2prim_lib_listInit());
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(d);
+		_6e5d_c2r_lib_decref(ret);
+		_6e5d_c2r_lib_decref(ds);
+		_6e5d_c2r_lib_decref(_);
+		_6e5d_c2r_lib_decref(sub);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	_6e5d_c2prim_lib_assign((&ret),_6e5d_c2prim_lib_listInit());
+	_6e5d_c2prim_lib_assign((&ds),_6e5d_c1path_c1_ls2(d));
+	_6e5d_c2prim_lib_assign((&_),NULL);
+	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(_))))){
+			_6e5d_c2prim_lib_assign((&_),_6e5d_c2prim_lib_fromU64(0));
+		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
+			_6e5d_c2prim_lib_assign((&_),_6e5d_c2prim_lib_add(_,_6e5d_c2prim_lib_fromU64(1)));
+		};
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(_,_6e5d_c2prim_lib_length(ds)))){
+			break;
+		};
+		_6e5d_c2prim_lib_assign((&sub),_6e5d_c2prim_lib_getItem(ds,_));
+		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(ret,_6e5d_c1path_c1_walkfiles(sub)));
+	};
+	(_return=ret);
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(d);
+	_6e5d_c2r_lib_decref(ret);
+	_6e5d_c2r_lib_decref(ds);
+	_6e5d_c2r_lib_decref(_);
+	_6e5d_c2r_lib_decref(sub);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(d);
+	_6e5d_c2r_lib_decref(ret);
+	_6e5d_c2r_lib_decref(ds);
+	_6e5d_c2r_lib_decref(_);
+	_6e5d_c2r_lib_decref(sub);
+	return NULL;
 }

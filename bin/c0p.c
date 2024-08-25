@@ -5,6 +5,12 @@
 #include<stdbool.h>
 #include<stdint.h>
 #include<assert.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<errno.h>
+#include<sys/stat.h>
+#include<limits.h>
+#include<sys/file.h>
 #include<sys/types.h>
 #include<sys/stat.h>
 #include<dirent.h>
@@ -29,35 +35,6 @@
 #include<unistd.h>
 #include<limits.h>
 #include<unistd.h>
-#include<time.h>
-#include<time.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<errno.h>
-#include<unistd.h>
-#include<sys/wait.h>
 #include<sys/types.h>
 #include<sys/stat.h>
 #include<dirent.h>
@@ -236,18 +213,13 @@ _6e5d_c2r_lib_Object (*_6e5d_c1str_lib_ledump(_6e5d_c2r_lib_Object (*v),_6e5d_c2
 _6e5d_c2r_lib_Object (*_6e5d_c1str_lib_n2h(_6e5d_c2r_lib_Object (*n)));
 _6e5d_c2r_lib_Object (*_6e5d_c1str_lib_hexdump(_6e5d_c2r_lib_Object (*b)));
 _6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lfind(_6e5d_c2r_lib_Object (*h),_6e5d_c2r_lib_Object (*n)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rename(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mkdir0(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_unlink(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rmdir(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_norm2(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_cwd());
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_chdir(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_ls(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isreg(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isdir(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_exist(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mtime(_6e5d_c2r_lib_Object (*obj)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_readUntil(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf),_6e5d_c2r_lib_Object (*ch)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_readln(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buffer)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_writeall(_6e5d_c2r_lib_Object (*dst),_6e5d_c2r_lib_Object (*data)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_readSized(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Object (*buf)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_readall(_6e5d_c2r_lib_Object (*file)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c1_readlines(_6e5d_c2r_lib_Object (*file)));
+_6e5d_c2r_lib_Object (*_6e5d_c1ltr_c1_dump(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_basename(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_parent(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_mkdir1(_6e5d_c2r_lib_Object (*path)));
@@ -256,9 +228,50 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_norm(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_rel(_6e5d_c2r_lib_Object (*abs),_6e5d_c2r_lib_Object (*r)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_runmake(_6e5d_c2r_lib_Object (*paths)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_dirmake(_6e5d_c2r_lib_Object (*paths)));
+_6e5d_c2r_lib_Object (*_6e5d_c0p_lib_proc(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*pragmaonce)));
+static _6e5d_c2r_lib_Object (*stripmacro(_6e5d_c2r_lib_Object (*l)));
 int main(int _c1argc,char (*(*_c1argv)));
+static _6e5d_c2r_lib_Object (*stripmacro(_6e5d_c2r_lib_Object (*l))){
+	_6e5d_c2r_lib_incref(l);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*out) = NULL;
+	auto _6e5d_c2r_lib_Object (*idx) = NULL;
+	auto _6e5d_c2r_lib_Object (*ll) = NULL;
+	_6e5d_c2prim_lib_assign((&out),_6e5d_c2prim_lib_listInit());
+	_6e5d_c2prim_lib_assign((&idx),NULL);
+	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(idx))))){
+			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_fromU64(0));
+		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
+			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
+		};
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(l)))){
+			break;
+		};
+		_6e5d_c2prim_lib_assign((&ll),_6e5d_c2prim_lib_getItem(l,idx));
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromBuf("macro",5),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(0))))){
+			continue;
+		};
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromBuf("include",7),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(0))))){
+			continue;
+		};
+		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(out,ll));
+	};
+	(_return=out);
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(out);
+	_6e5d_c2r_lib_decref(idx);
+	_6e5d_c2r_lib_decref(ll);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(out);
+	_6e5d_c2r_lib_decref(idx);
+	_6e5d_c2r_lib_decref(ll);
+	return NULL;
+}
 int main(int _c1argc,char (*(*_c1argv))){
 	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
 	_6e5d_c2r_lib_incref(args);
@@ -268,37 +281,10 @@ int main(int _c1argc,char (*(*_c1argv))){
 	};
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
 	((void )_return);
-	auto _6e5d_c2r_lib_Object (*paths) = NULL;
-	auto _6e5d_c2r_lib_Object (*ismk) = NULL;
-	auto _6e5d_c2r_lib_Object (*idx) = NULL;
-	auto _6e5d_c2r_lib_Object (*arg) = NULL;
-	_6e5d_c2prim_lib_assign((&paths),_6e5d_c2prim_lib_listInit());
-	_6e5d_c2prim_lib_assign((&ismk),_6e5d_c2prim_lib_fromFn(false));
-	_6e5d_c2prim_lib_assign((&idx),NULL);
-	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(idx))))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_fromU64(0));
-		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
-		};
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(args)))){
-			break;
-		};
-		_6e5d_c2prim_lib_assign((&arg),_6e5d_c2prim_lib_getItem(args,idx));
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(idx,_6e5d_c2prim_lib_fromU64(0)))){
-			continue;
-		};
-		_6e5d_c2prim_lib_assign((&ismk),_6e5d_c1path_fn_isreg(arg));
-		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(paths,_6e5d_c1path_c1_norm(arg)));
-	};
-	if(_6e5d_c2prim_lib_toBool(ismk)){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_runmake(paths));
-	}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_dirmake(paths));
-	};
+	auto _6e5d_c2r_lib_Object (*l) = NULL;
+	_6e5d_c2prim_lib_assign((&l),_6e5d_c0p_lib_proc(_6e5d_c1path_c1_norm(_6e5d_c2prim_lib_getItem(args,_6e5d_c2prim_lib_fromU64(1))),_6e5d_c2prim_lib_mapInit()));
+	_6e5d_c2prim_lib_assign((&l),stripmacro(l));
+	_6e5d_c2r_lib_check0(_6e5d_c1file_c1_writeall(_6e5d_c2prim_lib_getItem(args,_6e5d_c2prim_lib_fromU64(2)),_6e5d_c1ltr_c1_dump(l)));
 	_6e5d_c2r_lib_decref(args);
-	_6e5d_c2r_lib_decref(paths);
-	_6e5d_c2r_lib_decref(ismk);
-	_6e5d_c2r_lib_decref(idx);
-	_6e5d_c2r_lib_decref(arg);
+	_6e5d_c2r_lib_decref(l);
 }

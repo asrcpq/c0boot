@@ -17,13 +17,12 @@ addsyslib() {
 
 addgid() {
 	for item in $obj; do
-		if [ "$item" = "$1/build/lib.o" ]; then return; fi
+		if [ "$item" = "$1" ]; then return; fi
 	done
-	obj="$obj $1/build/lib.o"
-	recparse "$1/build/lib.dep"
+	obj="$obj $1"
 }
 
-recparse() {
+parse() {
 	if ! [ -f "$1" ]; then return; fi
 	for item in $visited; do
 		if [ "$item" = "$1" ]; then return; fi
@@ -42,7 +41,7 @@ recparse() {
 }
 
 stem="${1%.*}"
-recparse "$stem.dep"
+parse "$stem.dep"
 
 if [ -n "$run" ]; then
 	cflags=$(pkg-config --cflags "$syslibs")

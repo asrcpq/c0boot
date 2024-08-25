@@ -5,65 +5,12 @@
 #include<stdbool.h>
 #include<stdint.h>
 #include<assert.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
 #include<fcntl.h>
 #include<unistd.h>
 #include<errno.h>
 #include<sys/stat.h>
 #include<limits.h>
 #include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<time.h>
-#include<time.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<errno.h>
-#include<sys/stat.h>
-#include<limits.h>
-#include<sys/file.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
-#include<errno.h>
-#include<unistd.h>
-#include<sys/wait.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
-#include<unistd.h>
 #include<sys/types.h>
 #include<sys/stat.h>
 #include<dirent.h>
@@ -208,34 +155,6 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_rc(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_printobj(FILE (*f),_6e5d_c2r_lib_Object (*obj)));
 void _6e5d_c2prim_lib_assign(_6e5d_c2r_lib_Object (*(*dst)),_6e5d_c2r_lib_Object (*src));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_abort());
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_contains(_6e5d_c2r_lib_Object (*li),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_startswith(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_endswith(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rstrip(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lstripped(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_stripped(_6e5d_c2r_lib_Object (*by),_6e5d_c2r_lib_Object (*chars)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_pop(_6e5d_c2r_lib_Object (*l)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_push(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Object (*x)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_reverse(_6e5d_c2r_lib_Object (*a)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_splitws(_6e5d_c2r_lib_Object (*s)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_splitoff(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*idx)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_split(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lsplit(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*times)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rsplit(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*times)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_bufcopy(_6e5d_c2r_lib_Object (*f),_6e5d_c2r_lib_Object (*t)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_slice(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*i1),_6e5d_c2r_lib_Object (*i2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_rindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*item)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_append(_6e5d_c2r_lib_Object (*s1),_6e5d_c2r_lib_Object (*s2)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_join2(_6e5d_c2r_lib_Object (*delim),_6e5d_c2r_lib_Object (*lists)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_join(_6e5d_c2r_lib_Object (*lists)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_swaprm(_6e5d_c2r_lib_Object (*li),_6e5d_c2r_lib_Object (*idx)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lower(_6e5d_c2r_lib_Object (*s)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_sort(_6e5d_c2r_lib_Object (*array),_6e5d_c2r_lib_Object (*op)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_ledump(_6e5d_c2r_lib_Object (*v),_6e5d_c2r_lib_Object (*buf)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_n2h(_6e5d_c2r_lib_Object (*n)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_hexdump(_6e5d_c2r_lib_Object (*b)));
-_6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lfind(_6e5d_c2r_lib_Object (*h),_6e5d_c2r_lib_Object (*n)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_rename(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mkdir0(_6e5d_c2r_lib_Object (*path)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_unlink(_6e5d_c2r_lib_Object (*path)));
@@ -248,57 +167,172 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isreg(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_isdir(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_exist(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_fn_mtime(_6e5d_c2r_lib_Object (*obj)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_basename(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_parent(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_mkdir1(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_pmkdir(_6e5d_c2r_lib_Object (*path0)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_norm(_6e5d_c2r_lib_Object (*path)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_rel(_6e5d_c2r_lib_Object (*abs),_6e5d_c2r_lib_Object (*r)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_runmake(_6e5d_c2r_lib_Object (*paths)));
-_6e5d_c2r_lib_Object (*_6e5d_rmake_lib_dirmake(_6e5d_c2r_lib_Object (*paths)));
-int main(int _c1argc,char (*(*_c1argv)));
-int main(int _c1argc,char (*(*_c1argv))){
-	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
-	_6e5d_c2r_lib_incref(args);
-	_6e5d_c2prim_lib_resizeList(args,((size_t )_c1argc));
-	for(auto size_t idx = 0;(idx<_c1argc);(idx+=1)){
-		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(_c1argv[idx],strlen(_c1argv[idx])));
+static int64_t write2(int fd,_6e5d_vec_lib_Vec (*v),size_t offset);
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_write0(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_writeall2(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf)));
+static _6e5d_c2r_lib_Object (*read2(int fd,_6e5d_vec_lib_Vec (*v),size_t len));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_read(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buffer),_6e5d_c2r_lib_Object (*len)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*fd)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_open(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_lib_Object (*mode)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_size(_6e5d_c2r_lib_Object (*fd)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup(_6e5d_c2r_lib_Object (*src)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup2(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_seek(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*oo)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_errno());
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_flock(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*olock)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_truncate(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*olen)));
+static int64_t write2(int fd,_6e5d_vec_lib_Vec (*v),size_t offset){
+	if((NULL==v)){
+		return -2;
 	};
-	auto _6e5d_c2r_lib_Object (*_return) = NULL;
-	((void )_return);
-	auto _6e5d_c2r_lib_Object (*paths) = NULL;
-	auto _6e5d_c2r_lib_Object (*ismk) = NULL;
-	auto _6e5d_c2r_lib_Object (*idx) = NULL;
-	auto _6e5d_c2r_lib_Object (*arg) = NULL;
-	_6e5d_c2prim_lib_assign((&paths),_6e5d_c2prim_lib_listInit());
-	_6e5d_c2prim_lib_assign((&ismk),_6e5d_c2prim_lib_fromFn(false));
-	_6e5d_c2prim_lib_assign((&idx),NULL);
-	while(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(idx))))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_fromU64(0));
-		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-			_6e5d_c2prim_lib_assign((&idx),_6e5d_c2prim_lib_add(idx,_6e5d_c2prim_lib_fromU64(1)));
-		};
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(idx,_6e5d_c2prim_lib_length(args)))){
-			break;
-		};
-		_6e5d_c2prim_lib_assign((&arg),_6e5d_c2prim_lib_getItem(args,idx));
-		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(idx,_6e5d_c2prim_lib_fromU64(0)))){
-			continue;
-		};
-		_6e5d_c2prim_lib_assign((&ismk),_6e5d_c1path_fn_isreg(arg));
-		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(paths,_6e5d_c1path_c1_norm(arg)));
+	auto size_t l = (v->len);
+	if((offset>=l)){
+		return 0;
 	};
-	if(_6e5d_c2prim_lib_toBool(ismk)){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_runmake(paths));
-	}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromU64(1))){
-		_6e5d_c2r_lib_check0(_6e5d_rmake_lib_dirmake(paths));
+	auto uint8_t (*p) = (v->p);
+	auto ssize_t ret = write(((int )fd),(p+offset),(l-offset));
+	if((ret>=0)){
+		return ((int64_t )ret);
+	}else if(true){
+		return -1;
 	};
-	_6e5d_c2r_lib_decref(args);
-	_6e5d_c2r_lib_decref(paths);
-	_6e5d_c2r_lib_decref(ismk);
-	_6e5d_c2r_lib_decref(idx);
-	_6e5d_c2r_lib_decref(arg);
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_write0(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf))){
+	auto uint64_t vfd = _6e5d_c2prim_lib_toU64(fd);
+	_6e5d_c2r_lib_chk((&fd));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asStr(buf);
+	auto int64_t ret = write2(((int )vfd),v,0);
+	_6e5d_c2r_lib_chk((&buf));
+	if((ret<0)){
+		return NULL;
+	}else if(true){
+		return _6e5d_c2prim_lib_fromU64(((uint64_t )ret));
+	};
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_writeall2(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf))){
+	auto uint64_t vfd = _6e5d_c2prim_lib_toU64(fd);
+	_6e5d_c2r_lib_chk((&fd));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asStr(buf);
+	auto size_t offset = 0;
+	auto size_t l = (v->len);
+	while((offset<l)){
+		auto int64_t ret = write2(((int )vfd),v,offset);
+		if((ret>0)){
+			(offset+=((size_t )ret));
+		}else if(true){
+			_6e5d_c2r_lib_chk((&buf));
+			return NULL;
+		};
+	};
+	_6e5d_c2r_lib_chk((&buf));
+	return _6e5d_c2prim_lib_fromU64(0);
+}
+static _6e5d_c2r_lib_Object (*read2(int fd,_6e5d_vec_lib_Vec (*v),size_t len)){
+	if((v==NULL)){
+		return NULL;
+	};
+	auto size_t len0 = (v->len);
+	_6e5d_vec_lib_resize(v,(len0+len));
+	auto ssize_t readlen = read(fd,((v->p)+len0),len);
+	if((0>readlen)){
+		return NULL;
+	}else if(true){
+		_6e5d_vec_lib_resize(v,(len0+((size_t )readlen)));
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )readlen));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_read(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buffer),_6e5d_c2r_lib_Object (*len))){
+	auto uint64_t vfd = _6e5d_c2prim_lib_toU64(fd);
+	_6e5d_c2r_lib_chk((&fd));
+	auto size_t slen = ((size_t )_6e5d_c2prim_lib_toU64(len));
+	_6e5d_c2r_lib_chk((&len));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asStr(buffer);
+	auto _6e5d_c2r_lib_Object (*ret) = read2(((int )vfd),v,slen);
+	_6e5d_c2r_lib_chk((&buffer));
+	return ret;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*fd))){
+	auto uint64_t i = _6e5d_c2prim_lib_toU64(fd);
+	_6e5d_c2r_lib_chk((&fd));
+	close(((int )i));
+	return NULL;
+}
+static thread_local char pathbuf[PATH_MAX];
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_open(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_lib_Object (*mode))){
+	auto uint64_t m = _6e5d_c2prim_lib_toU64(mode);
+	_6e5d_c2r_lib_chk((&mode));
+	auto int64_t cstrlen = _6e5d_c2prim_lib_cstr(path,pathbuf,PATH_MAX);
+	_6e5d_c2r_lib_chk((&path));
+	if((cstrlen<0)){
+		return NULL;
+	};
+	auto int fd = open(pathbuf,((int )m),0644);
+	if((fd<0)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )fd));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_size(_6e5d_c2r_lib_Object (*fd))){
+	auto uint64_t vfd = _6e5d_c2prim_lib_toU64(fd);
+	_6e5d_c2r_lib_chk((&fd));
+	auto struct stat sb;
+	auto int ret = fstat(((int )vfd),(&sb));
+	if((0>ret)){
+		return NULL;
+	};
+	if((!S_ISREG((sb.st_mode)))){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )(sb.st_size)));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup(_6e5d_c2r_lib_Object (*src))){
+	auto uint64_t sfd = _6e5d_c2prim_lib_toU64(src);
+	auto int dfd = dup(((int )sfd));
+	_6e5d_c2r_lib_chk((&src));
+	if((dfd<0)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )dfd));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup2(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst))){
+	auto uint64_t sfd = _6e5d_c2prim_lib_toU64(src);
+	auto uint64_t dfd = _6e5d_c2prim_lib_toU64(dst);
+	_6e5d_c2r_lib_chk((&src));
+	_6e5d_c2r_lib_chk((&dst));
+	dup2(((int )sfd),((int )dfd));
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_seek(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*oo))){
+	auto uint64_t fd = _6e5d_c2prim_lib_toU64(ofd);
+	auto uint64_t offset = _6e5d_c2prim_lib_toU64(oo);
+	_6e5d_c2r_lib_chk((&ofd));
+	_6e5d_c2r_lib_chk((&oo));
+	auto off_t ret = lseek(((int )fd),((off_t )offset),SEEK_SET);
+	if((ret==-1)){
+		return NULL;
+	};
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )ret));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_errno()){
+	return _6e5d_c2prim_lib_fromU64(((uint64_t )errno));
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_flock(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*olock))){
+	auto int fd = ((int )_6e5d_c2prim_lib_toU64(ofd));
+	auto uint64_t lock = _6e5d_c2prim_lib_toU64(olock);
+	_6e5d_c2r_lib_chk((&ofd));
+	_6e5d_c2r_lib_chk((&olock));
+	if(lock){
+		assert((0==flock(fd,LOCK_EX)));
+	}else if(true){
+		assert((0==flock(fd,LOCK_UN)));
+	};
+	return NULL;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_truncate(_6e5d_c2r_lib_Object (*ofd),_6e5d_c2r_lib_Object (*olen))){
+	auto int fd = ((int )_6e5d_c2prim_lib_toU64(ofd));
+	auto uint64_t len = _6e5d_c2prim_lib_toU64(olen);
+	_6e5d_c2r_lib_chk((&ofd));
+	_6e5d_c2r_lib_chk((&olen));
+	ftruncate(fd,((off_t )len));
+	return NULL;
 }

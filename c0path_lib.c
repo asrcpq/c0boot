@@ -6,10 +6,10 @@
 #include<stdint.h>
 #include<assert.h>
 #include<unistd.h>
-size_t parent_dir_idx(char (*path),size_t j);
-size_t _6e5d_c0path_normalize(char (*path));
-void _6e5d_c0path_normrel(char (*rel));
-size_t parent_dir_idx(char (*path),size_t j){
+static size_t parent_dir_idx(char (*path),size_t j);
+size_t _6e5d_c0path_lib_normalize(char (*path));
+void _6e5d_c0path_lib_normrel(char (*rel));
+static size_t parent_dir_idx(char (*path),size_t j){
 	(j-=2);
 	for(;;(j-=1)){
 		if(('\x2f'==path[j])){
@@ -22,7 +22,7 @@ size_t parent_dir_idx(char (*path),size_t j){
 	};
 	return j;
 }
-size_t _6e5d_c0path_normalize(char (*path)){
+size_t _6e5d_c0path_lib_normalize(char (*path)){
 	if(((*path)!='\x2f')){
 		return 0;
 	};
@@ -63,13 +63,13 @@ size_t _6e5d_c0path_normalize(char (*path)){
 	return j;
 }
 static thread_local char normrelPath[4096];
-void _6e5d_c0path_normrel(char (*rel)){
+void _6e5d_c0path_lib_normrel(char (*rel)){
 	(normrelPath[0]=0);
 	if(('\x2f'!=rel[0])){
 		getcwd(normrelPath,4096);
 		strcat(normrelPath,"/");
 	};
 	strcat(normrelPath,rel);
-	_6e5d_c0path_normalize(normrelPath);
+	_6e5d_c0path_lib_normalize(normrelPath);
 	strcpy(rel,normrelPath);
 }
