@@ -281,7 +281,6 @@ static _6e5d_c2r_lib_Object (*recdump(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Ob
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("unsupported type",16));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,l);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};

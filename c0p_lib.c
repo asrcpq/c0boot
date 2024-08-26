@@ -743,7 +743,9 @@ static _6e5d_c2r_lib_Object (*proc(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Obj
 				_6e5d_c2prim_lib_abort();
 			};
 			_6e5d_c2prim_lib_assign((&sgid),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(1)));
-			_6e5d_c2prim_lib_assign((&dst),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(2)));
+			if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(llen,_6e5d_c2prim_lib_fromU64(3)))){
+				_6e5d_c2prim_lib_assign((&dst),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(2)));
+			};
 			_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(out,ll));
 		}else if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(first,_6e5d_c2prim_lib_fromBuf("include",7)))){
 			_6e5d_c2r_lib_check0(include(src,ll,pragmaonce,ns,out));

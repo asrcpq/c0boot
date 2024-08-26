@@ -4,6 +4,6 @@ d="${d%/*}"
 mkdir -p build
 for file in *.ltr; do
 	echo $file
-	stem="$("$d/build/ccc" "$file")"
-	sh "$d/bcs.sh" "$stem"
+	out="$("$d/build/ccc" "$file")"
+	sh "$d/bcs.sh" "$out"
 done

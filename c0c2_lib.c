@@ -182,7 +182,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c1str_lib_lfind(_6e5d_c2r_lib_Object (*h),_6e5d_c2r
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_write0(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_writeall2(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_read(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buffer),_6e5d_c2r_lib_Object (*len)));
-_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*fd)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*ofd)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_open(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_lib_Object (*mode)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_size(_6e5d_c2r_lib_Object (*fd)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup(_6e5d_c2r_lib_Object (*src)));
@@ -325,7 +325,6 @@ static _6e5d_c2r_lib_Object (*decl(_6e5d_c2r_lib_Object (*ty),_6e5d_c2r_lib_Obje
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad decl",8));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,ty);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
@@ -420,7 +419,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 	auto _6e5d_c2r_lib_Object (*ll) = NULL;
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(key)))){
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("empty kw",8));
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
@@ -473,7 +471,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -486,7 +483,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -499,7 +495,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -512,7 +507,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -525,7 +519,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -538,7 +531,6 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad unary",9));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,l);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -613,7 +605,6 @@ static _6e5d_c2r_lib_Object (*expr(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Obj
 				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("bad ord",7));
 				fprintf(stderr," ");
 				_6e5d_c2prim_lib_printobj(stderr,l);
-				fprintf(stderr," ");
 				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 				_6e5d_c2prim_lib_abort();
 			};
@@ -637,7 +628,6 @@ static _6e5d_c2r_lib_Object (*expr(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Obj
 	};
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(l)))){
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("zero-len expr",13));
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
@@ -767,7 +757,6 @@ static _6e5d_c2r_lib_Object (*stmt(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Obj
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("empty/str stmt",14));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,l);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
@@ -876,7 +865,6 @@ static _6e5d_c2r_lib_Object (*translateFn(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_li
 	_6e5d_c2prim_lib_assign((&name),_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(1)));
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(name)))){
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("'emptyfunc",10));
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
@@ -1028,7 +1016,6 @@ static _6e5d_c2r_lib_Object (*writedep(_6e5d_c2r_lib_Object (*depfile),_6e5d_c2r
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("warn:dupdetected",16));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,item);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2r_lib_decref(depfile);
 		_6e5d_c2r_lib_decref(item);
@@ -1104,7 +1091,6 @@ _6e5d_c2r_lib_Object (*_6e5d_c0c2_lib_c0c2(_6e5d_c2r_lib_Object (*c0),_6e5d_c2r_
 					_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("'badsyslib",10));
 					fprintf(stderr," ");
 					_6e5d_c2prim_lib_printobj(stderr,l);
-					fprintf(stderr," ");
 					_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 					_6e5d_c2prim_lib_abort();
 				};

@@ -216,7 +216,6 @@ _6e5d_c2r_lib_Object (*_6e5d_finitemacro_lib_reportunused(_6e5d_c2r_lib_Object (
 	_6e5d_c2prim_lib_printobj(stderr,msg);
 	fprintf(stderr," ");
 	_6e5d_c2prim_lib_printobj(stderr,missing);
-	fprintf(stderr," ");
 	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 	_6e5d_c2r_lib_decref(all);
 	_6e5d_c2r_lib_decref(used);
@@ -367,7 +366,6 @@ _6e5d_c2r_lib_Object (*_6e5d_finitemacro_lib_substitute(_6e5d_c2r_lib_Object (*a
 			_6e5d_c2prim_lib_printobj(stderr,body);
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,ret);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -438,7 +436,6 @@ static _6e5d_c2r_lib_Object (*procfn(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Obj
 			_6e5d_c2prim_lib_printobj(stderr,l);
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,vars);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};

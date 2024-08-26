@@ -5,14 +5,14 @@
 #include<stdbool.h>
 #include<stdint.h>
 #include<assert.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<dirent.h>
-#include<unistd.h>
-#include<limits.h>
 #include<fcntl.h>
+#include<unistd.h>
 #include<errno.h>
+#include<sys/stat.h>
+#include<limits.h>
 #include<sys/file.h>
+#include<sys/types.h>
+#include<dirent.h>
 typedef struct _6e5d_vec_lib_Vec _6e5d_vec_lib_Vec;
 typedef struct _6e5d_hashmap_lib_Iter _6e5d_hashmap_lib_Iter;
 typedef struct _6e5d_hashmap_lib_Hashmap _6e5d_hashmap_lib_Hashmap;
@@ -190,7 +190,70 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
 _6e5d_c2r_lib_Object (*_6e5d_c0p_lib_c0p(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_lib_Object (*ret)));
 _6e5d_c2r_lib_Object (*_6e5d_c1c0_lib_c1c0(_6e5d_c2r_lib_Object (*blocks)));
 _6e5d_c2r_lib_Object (*_6e5d_c0c2_lib_c0c2(_6e5d_c2r_lib_Object (*c0),_6e5d_c2r_lib_Object (*cfile),_6e5d_c2r_lib_Object (*depfile)));
+static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src)));
 int main(int _c1argc,char (*(*_c1argv)));
+static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src))){
+	_6e5d_c2r_lib_incref(src);
+	auto _6e5d_c2r_lib_Object (*_return) = NULL;
+	((void )_return);
+	auto _6e5d_c2r_lib_Object (*l) = NULL;
+	auto _6e5d_c2r_lib_Object (*out) = NULL;
+	auto _6e5d_c2r_lib_Object (*ok) = NULL;
+	auto _6e5d_c2r_lib_Object (*path) = NULL;
+	auto _6e5d_c2r_lib_Object (*cfile) = NULL;
+	auto _6e5d_c2r_lib_Object (*depfile) = NULL;
+	_6e5d_c2prim_lib_assign((&l),_6e5d_c2prim_lib_listInit());
+	_6e5d_c2prim_lib_assign((&out),_6e5d_c0p_lib_c0p(src,l));
+	_6e5d_c2prim_lib_printobj(stderr,src);
+	fprintf(stderr," ");
+	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("->",2));
+	fprintf(stderr," ");
+	_6e5d_c2prim_lib_printobj(stderr,out);
+	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(out))))){
+		(_return=_6e5d_c2prim_lib_fromBuf("/dev/null",9));
+		_6e5d_c2r_lib_incref(_return);
+		_6e5d_c2r_lib_decref(src);
+		_6e5d_c2r_lib_decref(l);
+		_6e5d_c2r_lib_decref(out);
+		_6e5d_c2r_lib_decref(ok);
+		_6e5d_c2r_lib_decref(path);
+		_6e5d_c2r_lib_decref(cfile);
+		_6e5d_c2r_lib_decref(depfile);
+		_6e5d_c2r_lib_deconly(_return);
+		return _return;
+	};
+	_6e5d_c2prim_lib_assign((&out),_6e5d_c1path_c1_rel(_6e5d_c1path_c1_parent(src),out));
+	_6e5d_c2prim_lib_assign((&ok),_6e5d_c1path_c1_pmkdir(_6e5d_c1path_c1_parent(out)));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(ok))))){
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+		_6e5d_c2prim_lib_abort();
+	};
+	_6e5d_c2prim_lib_assign((&path),_6e5d_c2prim_lib_getItem(_6e5d_c1str_lib_rsplit(out,_6e5d_c2prim_lib_fromU64(46),_6e5d_c2prim_lib_fromU64(1)),_6e5d_c2prim_lib_fromU64(0)));
+	_6e5d_c2prim_lib_assign((&cfile),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,path),1,_6e5d_c2prim_lib_fromBuf(".c",2))));
+	_6e5d_c2prim_lib_assign((&depfile),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,path),1,_6e5d_c2prim_lib_fromBuf(".dep",4))));
+	_6e5d_c2prim_lib_assign((&l),_6e5d_c1c0_lib_c1c0(l));
+	_6e5d_c2r_lib_check0(_6e5d_c0c2_lib_c0c2(l,cfile,depfile));
+	(_return=out);
+	_6e5d_c2r_lib_incref(_return);
+	_6e5d_c2r_lib_decref(src);
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(out);
+	_6e5d_c2r_lib_decref(ok);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(cfile);
+	_6e5d_c2r_lib_decref(depfile);
+	_6e5d_c2r_lib_deconly(_return);
+	return _return;
+	_6e5d_c2r_lib_decref(src);
+	_6e5d_c2r_lib_decref(l);
+	_6e5d_c2r_lib_decref(out);
+	_6e5d_c2r_lib_decref(ok);
+	_6e5d_c2r_lib_decref(path);
+	_6e5d_c2r_lib_decref(cfile);
+	_6e5d_c2r_lib_decref(depfile);
+	return NULL;
+}
 int main(int _c1argc,char (*(*_c1argv))){
 	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
 	_6e5d_c2r_lib_incref(args);
@@ -200,41 +263,10 @@ int main(int _c1argc,char (*(*_c1argv))){
 	};
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
 	((void )_return);
-	auto _6e5d_c2r_lib_Object (*l) = NULL;
 	auto _6e5d_c2r_lib_Object (*src) = NULL;
-	auto _6e5d_c2r_lib_Object (*out) = NULL;
-	auto _6e5d_c2r_lib_Object (*ok) = NULL;
-	auto _6e5d_c2r_lib_Object (*path) = NULL;
-	auto _6e5d_c2r_lib_Object (*cfile) = NULL;
-	auto _6e5d_c2r_lib_Object (*depfile) = NULL;
-	_6e5d_c2prim_lib_assign((&l),_6e5d_c2prim_lib_listInit());
 	_6e5d_c2prim_lib_assign((&src),_6e5d_c1path_c1_norm(_6e5d_c2prim_lib_getItem(args,_6e5d_c2prim_lib_fromU64(1))));
-	_6e5d_c2prim_lib_assign((&out),_6e5d_c0p_lib_c0p(src,l));
-	_6e5d_c2prim_lib_assign((&out),_6e5d_c1path_c1_rel(_6e5d_c1path_c1_parent(src),out));
-	_6e5d_c2prim_lib_assign((&ok),_6e5d_c1path_c1_pmkdir(_6e5d_c1path_c1_parent(out)));
-	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(ok))))){
-		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
-		_6e5d_c2prim_lib_abort();
-	};
-	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_getItem(args,_6e5d_c2prim_lib_fromU64(1)));
-	fprintf(stderr," ");
-	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("->",2));
-	fprintf(stderr," ");
-	_6e5d_c2prim_lib_printobj(stderr,out);
-	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
-	_6e5d_c2prim_lib_assign((&path),_6e5d_c2prim_lib_getItem(_6e5d_c1str_lib_rsplit(out,_6e5d_c2prim_lib_fromU64(46),_6e5d_c2prim_lib_fromU64(1)),_6e5d_c2prim_lib_fromU64(0)));
-	_6e5d_c2prim_lib_assign((&cfile),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,path),1,_6e5d_c2prim_lib_fromBuf(".c",2))));
-	_6e5d_c2prim_lib_assign((&depfile),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,path),1,_6e5d_c2prim_lib_fromBuf(".dep",4))));
-	_6e5d_c2prim_lib_assign((&l),_6e5d_c1c0_lib_c1c0(l));
-	_6e5d_c2r_lib_check0(_6e5d_c0c2_lib_c0c2(l,cfile,depfile));
-	_6e5d_c2prim_lib_printobj(stdout,path);
+	_6e5d_c2prim_lib_printobj(stdout,run(src));
 	_6e5d_c2prim_lib_printobj(stdout,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 	_6e5d_c2r_lib_decref(args);
-	_6e5d_c2r_lib_decref(l);
 	_6e5d_c2r_lib_decref(src);
-	_6e5d_c2r_lib_decref(out);
-	_6e5d_c2r_lib_decref(ok);
-	_6e5d_c2r_lib_decref(path);
-	_6e5d_c2r_lib_decref(cfile);
-	_6e5d_c2r_lib_decref(depfile);
 }
