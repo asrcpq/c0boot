@@ -274,7 +274,6 @@ static _6e5d_c2r_lib_Object (*recparse(_6e5d_c2r_lib_Object (*queue),_6e5d_c2r_l
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("parsing",7));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,path);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_assign((&pdir),_6e5d_c1path_c1_parent(path));
 		_6e5d_c2prim_lib_assign((&data),_6e5d_c1file_c1_readall(path));
@@ -343,7 +342,6 @@ static _6e5d_c2r_lib_Object (*dirparse(_6e5d_c2r_lib_Object (*queue),_6e5d_c2r_l
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("parsing",7));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,path);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_assign((&pdir),_6e5d_c1path_c1_parent(path));
 		_6e5d_c2prim_lib_assign((&deppath),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,path),1,_6e5d_c2prim_lib_fromBuf("/.lpat/deps.txt",15))));
@@ -414,7 +412,6 @@ static _6e5d_c2r_lib_Object (*mkcheck(_6e5d_c2r_lib_Object (*heads),_6e5d_c2r_li
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("cannot build",12));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,body);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -505,7 +502,6 @@ static _6e5d_c2r_lib_Object (*dircheck(_6e5d_c2r_lib_Object (*head),_6e5d_c2r_li
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("build(missing epoch)",20));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,head);
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		(_return=_6e5d_c2prim_lib_fromU64(1));
 		_6e5d_c2r_lib_incref(_return);
@@ -547,7 +543,6 @@ static _6e5d_c2r_lib_Object (*dircheck(_6e5d_c2r_lib_Object (*head),_6e5d_c2r_li
 			_6e5d_c2prim_lib_printobj(stderr,head);
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,body);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			(_return=_6e5d_c2prim_lib_fromU64(1));
 			_6e5d_c2r_lib_incref(_return);
@@ -589,7 +584,6 @@ static _6e5d_c2r_lib_Object (*dircheck(_6e5d_c2r_lib_Object (*head),_6e5d_c2r_li
 			_6e5d_c2prim_lib_printobj(stderr,head);
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,src);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			(_return=_6e5d_c2prim_lib_fromU64(1));
 			_6e5d_c2r_lib_incref(_return);
@@ -755,14 +749,12 @@ static _6e5d_c2r_lib_Object (*update(_6e5d_c2r_lib_Object (*deps),_6e5d_c2r_lib_
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_getItem(pend,_6e5d_c2prim_lib_fromU64(2)));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_getItem(pend,_6e5d_c2prim_lib_fromU64(3)));
-		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_assign((&ret),_6e5d_c1fork_c1_run(_6e5d_c2prim_lib_getItem(pend,_6e5d_c2prim_lib_fromU64(3)),_6e5d_c2prim_lib_fromBuf("",0)));
 		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(ret))))){
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("FAILED",6));
 			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,pend);
-			fprintf(stderr," ");
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};

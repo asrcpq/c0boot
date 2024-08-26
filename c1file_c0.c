@@ -168,7 +168,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_write0(_6e5d_c2r_lib_Object (*fd),_6e5d_c
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_writeall2(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buf)));
 static _6e5d_c2r_lib_Object (*read2(int fd,_6e5d_vec_lib_Vec (*v),size_t len));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_read(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r_lib_Object (*buffer),_6e5d_c2r_lib_Object (*len)));
-_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*fd)));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*ofd)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_open(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_lib_Object (*mode)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_size(_6e5d_c2r_lib_Object (*fd)));
 _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_dup(_6e5d_c2r_lib_Object (*src)));
@@ -229,7 +229,7 @@ static _6e5d_c2r_lib_Object (*read2(int fd,_6e5d_vec_lib_Vec (*v),size_t len)){
 	};
 	auto size_t len0 = (v->len);
 	_6e5d_vec_lib_resize(v,(len0+len));
-	auto ssize_t readlen = read(fd,((v->p)+len0),len);
+	auto ssize_t readlen = read(fd,(((uint8_t (*))(v->p))+len0),len);
 	if((0>readlen)){
 		return NULL;
 	}else if(true){
@@ -247,10 +247,11 @@ _6e5d_c2r_lib_Object (*_6e5d_c1file_c0_read(_6e5d_c2r_lib_Object (*fd),_6e5d_c2r
 	_6e5d_c2r_lib_chk((&buffer));
 	return ret;
 }
-_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*fd))){
-	auto uint64_t i = _6e5d_c2prim_lib_toU64(fd);
-	_6e5d_c2r_lib_chk((&fd));
-	close(((int )i));
+_6e5d_c2r_lib_Object (*_6e5d_c1file_c0_close(_6e5d_c2r_lib_Object (*ofd))){
+	auto int fd = ((int )_6e5d_c2prim_lib_toU64(ofd));
+	_6e5d_c2r_lib_chk((&ofd));
+	fsync(fd);
+	close(fd);
 	return NULL;
 }
 static thread_local char pathbuf[PATH_MAX];

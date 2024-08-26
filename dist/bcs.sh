@@ -1,27 +1,5 @@
 set -e
 
-addlink() {
-	for item in $links; do
-		if [ "$item" = "$1" ]; then return; fi
-	done
-	links="$links $1"
-}
-
-addsyslib() {
-	for item in $syslibs; do
-		if [ "$item" = "$1" ]; then return; fi
-	done
-	syslibs="$syslibs $1"
-	run=true
-}
-
-addgid() {
-	for item in $obj; do
-		if [ "$item" = "$1" ]; then return; fi
-	done
-	obj="$obj $1"
-}
-
 parse() {
 	if ! [ -f "$1" ]; then return; fi
 	for item in $visited; do
@@ -31,28 +9,29 @@ parse() {
 	while read -r line; do
 		first="${line%"${line#?}"}"
 		if [ "$first" = "/" ]; then
-			addgid "$line"
+			links="$links $line"
 		elif [ "$first" = "-" ]; then
-			addlink "$line"
+			links="$links $line"
 		else
-			addsyslib "$line"
+			syslibs="$syslibs $line"
+			run=true
 		fi
 	done < "$1"
 }
 
-stem="${1%.*}"
+stem="$1"
 parse "$stem.dep"
 
 if [ -n "$run" ]; then
 	cflags=$(pkg-config --cflags "$syslibs")
 	libs=$(pkg-config --libs "$syslibs")
 fi
-cc="clang -Og -Wmost -Wfatal-errors -Wconversion -Wno-parentheses\
-	-Wno-incompatible-function-pointer-types\
-	-Wno-incompatible-pointer-types-discards-qualifiers\
+cc="cc -Og -g -Wfatal-errors
+	-Wno-discarded-qualifiers
+	-Wno-incompatible-pointer-types
 	--std=c2x -D_POSIX_C_SOURCE=200809L $CFLAGS"
 
->&2 echo "* TARGET:$stem.o SYSLIB:$cflags"
+# >&2 echo "* BCS:$stem.o"
 $cc -c -o $stem.o $cflags $stem.c
 
 name="${stem##*/}"
@@ -60,8 +39,8 @@ if [ "$name" != main ] && [ "$name" != test ]; then
 	exit 0
 fi
 
->&2 echo "* TARGET:$stem.elf GID:$obj SYSLIB:$libs"
 # all manual linking "-link" are processed after pkgconfig
 # this is a limitation of pkg-config
 # however the real solution is not to use pkg-config so we just put it here
+# >&2 echo "* BCS:$stem.elf"
 $cc -o $stem.elf $stem.o $obj $libs $links
