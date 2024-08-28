@@ -102,7 +102,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_gt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_eq(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ne(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
-static int8_t tid0(_6e5d_c2r_lib_Object (*obj));
+int8_t _6e5d_c2prim_lib_tid0(_6e5d_c2r_lib_Object (*obj));
 int8_t _6e5d_c2prim_lib_tid(_6e5d_c2r_lib_Object (*obj));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_not(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lnot(_6e5d_c2r_lib_Object (*obj)));
@@ -240,7 +240,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_div(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ge(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		fprintf(stderr,"type mismatch >=""\x0a""");
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)>=_6e5d_c2prim_lib_toU64(v2))));
@@ -285,7 +285,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ge(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_le(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		fprintf(stderr,"type mismatch <=""\x0a""");
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)<=_6e5d_c2prim_lib_toU64(v2))));
@@ -330,7 +330,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_le(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_gt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		fprintf(stderr,"type mismatch >""\x0a""");
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)>_6e5d_c2prim_lib_toU64(v2))));
@@ -375,7 +375,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_gt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		fprintf(stderr,"type mismatch <""\x0a""");
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)<_6e5d_c2prim_lib_toU64(v2))));
@@ -420,7 +420,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_eq(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		(ret=_6e5d_c2prim_lib_fromBool(false));
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)==_6e5d_c2prim_lib_toU64(v2))));
@@ -465,7 +465,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_eq(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 }
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ne(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2))){
 	auto _6e5d_c2r_lib_Object (*ret) = NULL;
-	if((tid0(v1)!=tid0(v2))){
+	if((_6e5d_c2prim_lib_tid0(v1)!=_6e5d_c2prim_lib_tid0(v2))){
 		(ret=_6e5d_c2prim_lib_fromBool(true));
 	}else if((1==(v1->ty))){
 		(ret=_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toU64(v1)!=_6e5d_c2prim_lib_toU64(v2))));
@@ -508,14 +508,14 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ne(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 	_6e5d_c2r_lib_chk((&v2));
 	return ret;
 }
-static int8_t tid0(_6e5d_c2r_lib_Object (*obj)){
+int8_t _6e5d_c2prim_lib_tid0(_6e5d_c2r_lib_Object (*obj)){
 	if((obj==NULL)){
 		return 0;
 	};
 	return (obj->ty);
 }
 int8_t _6e5d_c2prim_lib_tid(_6e5d_c2r_lib_Object (*obj)){
-	auto int8_t ret = tid0(obj);
+	auto int8_t ret = _6e5d_c2prim_lib_tid0(obj);
 	_6e5d_c2r_lib_chk((&obj));
 	return ret;
 }

@@ -110,6 +110,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_gt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_eq(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ne(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
+int8_t _6e5d_c2prim_lib_tid0(_6e5d_c2r_lib_Object (*obj));
 int8_t _6e5d_c2prim_lib_tid(_6e5d_c2r_lib_Object (*obj));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_not(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lnot(_6e5d_c2r_lib_Object (*obj)));
@@ -372,7 +373,7 @@ static _6e5d_c2r_lib_Object (*loadheader(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_
 	_6e5d_c2prim_lib_assign((&dst),_6e5d_c1path_c1_norm(_6e5d_c2prim_lib_fromBuf("/6e5d/c0p/lib.ltr/../cache",26)));
 	_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(dst,path));
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c1path_c0_isreg(path)))){
-		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("'includedbutnotexist",20));
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("includedbutnotexist",19));
 		fprintf(stderr," ");
 		_6e5d_c2prim_lib_printobj(stderr,path);
 		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));

@@ -110,6 +110,7 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_gt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lt(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_eq(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_ne(_6e5d_c2r_lib_Object (*v1),_6e5d_c2r_lib_Object (*v2)));
+int8_t _6e5d_c2prim_lib_tid0(_6e5d_c2r_lib_Object (*obj));
 int8_t _6e5d_c2prim_lib_tid(_6e5d_c2r_lib_Object (*obj));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_not(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_lnot(_6e5d_c2r_lib_Object (*obj)));
@@ -232,7 +233,11 @@ static _6e5d_c2r_lib_Object (*decl(_6e5d_c2r_lib_Object (*ty),_6e5d_c2r_lib_Obje
 		_6e5d_c2r_lib_deconly(_return);
 		return _return;
 	};
-	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_le(_6e5d_c2prim_lib_fromU64(2),_6e5d_c2prim_lib_length(ty))))){
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ge(_6e5d_c2prim_lib_fromU64(1),_6e5d_c2prim_lib_length(ty)))){
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("shortdecl",9));
+		fprintf(stderr," ");
+		_6e5d_c2prim_lib_printobj(stderr,ty);
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 		_6e5d_c2prim_lib_abort();
 	};
 	_6e5d_c2prim_lib_assign((&kind),_6e5d_c2prim_lib_getItem(ty,_6e5d_c2prim_lib_fromU64(0)));
@@ -878,6 +883,13 @@ static _6e5d_c2r_lib_Object (*translateFn(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_li
 		_6e5d_c2prim_lib_assign((&binding),_6e5d_c2prim_lib_getItem(bindings,idx));
 		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ne(idx,_6e5d_c2prim_lib_fromU64(0)))){
 			_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(b,_6e5d_c2prim_lib_fromU64(44)));
+		};
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((6==_6e5d_c2prim_lib_tid(binding)))))||_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ne(_6e5d_c2prim_lib_fromU64(2),_6e5d_c2prim_lib_length(binding))))))){
+			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("badargbind",10));
+			fprintf(stderr," ");
+			_6e5d_c2prim_lib_printobj(stderr,binding);
+			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+			_6e5d_c2prim_lib_abort();
 		};
 		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(b,decl(_6e5d_c2prim_lib_getItem(binding,_6e5d_c2prim_lib_fromU64(1)),_6e5d_c2prim_lib_getItem(binding,_6e5d_c2prim_lib_fromU64(0)))));
 	};
