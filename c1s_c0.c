@@ -5,9 +5,6 @@
 #include<stdbool.h>
 #include<stdint.h>
 #include<assert.h>
-#include<errno.h>
-#include<unistd.h>
-#include<sys/wait.h>
 typedef struct _6e5d_vec_lib_Vec _6e5d_vec_lib_Vec;
 typedef struct _6e5d_hashmap_lib_Iter _6e5d_hashmap_lib_Iter;
 typedef struct _6e5d_hashmap_lib_Hashmap _6e5d_hashmap_lib_Hashmap;
@@ -147,57 +144,131 @@ _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_rc(_6e5d_c2r_lib_Object (*obj)));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_printobj(FILE (*f),_6e5d_c2r_lib_Object (*obj)));
 void _6e5d_c2prim_lib_assign(_6e5d_c2r_lib_Object (*(*dst)),_6e5d_c2r_lib_Object (*src));
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_abort());
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_pipe());
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_exit(_6e5d_c2r_lib_Object (*val)));
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_execvp(_6e5d_c2r_lib_Object (*cmd)));
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_fork());
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_wait(_6e5d_c2r_lib_Object (*pid)));
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_pipe()){
-	auto int pip[2];
-	assert((0==pipe(pip)));
-	auto _6e5d_c2r_lib_Object (*pipl) = _6e5d_c2prim_lib_listInit();
-	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(pipl);
-	auto _6e5d_c2r_lib_Object (*fd1) = _6e5d_c2prim_lib_fromU64(((uint64_t )pip[0]));
-	auto _6e5d_c2r_lib_Object (*fd2) = _6e5d_c2prim_lib_fromU64(((uint64_t )pip[1]));
-	_6e5d_c2r_lib_incref(fd1);
-	_6e5d_c2r_lib_incref(fd2);
-	_6e5d_vec_lib_pushv(v,(&fd1));
-	_6e5d_vec_lib_pushv(v,(&fd2));
-	return pipl;
-}
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_exit(_6e5d_c2r_lib_Object (*val))){
-	exit(((int )_6e5d_c2prim_lib_toU64(val)));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_push(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Object (*o)));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_split(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim)));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_lindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim)));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_ucopy(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst),_6e5d_c2r_lib_Object (*start),_6e5d_c2r_lib_Object (*end),_6e5d_c2r_lib_Object (*offset)));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_push(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_lib_Object (*o))){
+	auto bool isbytes = (5==_6e5d_c2prim_lib_tid0(l));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(l);
+	assert(v);
+	if(isbytes){
+		if((1!=_6e5d_c2prim_lib_tid0(o))){
+			fprintf(stderr,"c1spushbadtype""\x0a""");
+			abort();
+		};
+		auto uint8_t b = ((uint8_t )_6e5d_c2prim_lib_toU64(o));
+		_6e5d_vec_lib_pushv(v,(&b));
+	}else if(true){
+		_6e5d_c2r_lib_incref(o);
+		_6e5d_vec_lib_pushv(v,(&o));
+	};
+	_6e5d_c2r_lib_chk((&l));
+	_6e5d_c2r_lib_chk((&o));
 	return NULL;
 }
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_execvp(_6e5d_c2r_lib_Object (*cmd))){
-	auto char (*args[4096]);
-	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(cmd);
-	assert((NULL!=v));
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_split(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim))){
+	if((5!=_6e5d_c2prim_lib_tid0(s))){
+		fprintf(stderr,"c1ssplitbads""\x0a""");
+		abort();
+	};
+	if((1!=_6e5d_c2prim_lib_tid0(delim))){
+		fprintf(stderr,"c1ssplitbaddelim""\x0a""");
+		abort();
+	};
+	auto uint8_t d = ((uint8_t )_6e5d_c2prim_lib_toU64(delim));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(s);
+	auto _6e5d_c2r_lib_Object (*ret) = _6e5d_c2prim_lib_listInit();
+	auto _6e5d_vec_lib_Vec (*r) = _6e5d_c2r_lib_asVec(ret);
+	auto uint8_t (*prev) = (v->p);
+	auto uint8_t (*end) = ((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size))));
+	auto uint8_t (*iter);
+	for((iter=(v->p));(iter<=end);(iter+=1)){
+		if(((iter!=end)&&(d!=(*iter)))){
+			continue;
+		};
+		auto _6e5d_c2r_lib_Object (*sp) = _6e5d_c2prim_lib_bytesInit();
+		_6e5d_c2r_lib_incref(sp);
+		_6e5d_vec_lib_pushv(r,(&sp));
+		auto _6e5d_vec_lib_Vec (*v2) = _6e5d_c2r_lib_asVec(sp);
+		_6e5d_vec_lib_extend(v2,prev,(iter-prev));
+		(prev=(iter+1));
+	};
+	_6e5d_c2r_lib_chk((&s));
+	_6e5d_c2r_lib_chk((&delim));
+	return ret;
+}
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_lindex(_6e5d_c2r_lib_Object (*s),_6e5d_c2r_lib_Object (*delim))){
+	if((5!=_6e5d_c2prim_lib_tid0(s))){
+		fprintf(stderr,"c1slindexbads""\x0a""");
+		abort();
+	};
+	if((1!=_6e5d_c2prim_lib_tid0(delim))){
+		fprintf(stderr,"c1slindexbaddelim""\x0a""");
+		abort();
+	};
+	auto uint8_t d = ((uint8_t )_6e5d_c2prim_lib_toU64(delim));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(s);
 	auto size_t idx = 0;
-	for(auto _6e5d_c2r_lib_Object (*(*iter)) = (v->p);(((void (*))iter)<((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))));(iter+=1)){
-		auto char (*s) = _6e5d_c2prim_lib_cstrAlloc((*iter));
-		assert((NULL!=s));
-		(args[idx]=s);
+	for(auto uint8_t (*iter) = (v->p);(((void (*))iter)<((void (*))(((uint8_t (*))(v->p))+((v->len)*(v->size)))));(iter+=1)){
+		if(((*iter)==d)){
+			return _6e5d_c2prim_lib_fromU64(idx);
+		};
 		(idx+=1);
 	};
-	(args[idx]=NULL);
-	execvp(args[0],args);
+	_6e5d_c2r_lib_chk((&s));
+	_6e5d_c2r_lib_chk((&delim));
 	return NULL;
 }
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_fork()){
-	auto pid_t child_pid = fork();
-	if((child_pid<0)){
-		return NULL;
+_6e5d_c2r_lib_Object (*_6e5d_c1s_c0_ucopy(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Object (*dst),_6e5d_c2r_lib_Object (*start),_6e5d_c2r_lib_Object (*end),_6e5d_c2r_lib_Object (*offset))){
+	auto size_t s = ((size_t )_6e5d_c2prim_lib_toU64(start));
+	_6e5d_c2r_lib_chk((&start));
+	auto size_t e = ((size_t )_6e5d_c2prim_lib_toU64(end));
+	_6e5d_c2r_lib_chk((&end));
+	auto size_t o = ((size_t )_6e5d_c2prim_lib_toU64(offset));
+	_6e5d_c2r_lib_chk((&offset));
+	auto _6e5d_vec_lib_Vec (*v) = _6e5d_c2r_lib_asVec(src);
+	assert(v);
+	auto _6e5d_vec_lib_Vec (*d) = _6e5d_c2r_lib_asVec(dst);
+	assert(d);
+	if((o>(d->len))){
+		fprintf(stderr,"largedstoffset""\x0a""");
+		abort();
 	};
-	return _6e5d_c2prim_lib_fromU64(((uint64_t )child_pid));
-}
-_6e5d_c2r_lib_Object (*_6e5d_c1fork_c0_wait(_6e5d_c2r_lib_Object (*pid))){
-	auto int status;
-	auto int child_pid = ((int )_6e5d_c2prim_lib_toU64(pid));
-	waitpid(child_pid,(&status),0);
-	_6e5d_c2r_lib_chk((&pid));
-	if(WIFEXITED(status)){
-		return _6e5d_c2prim_lib_fromI64(WEXITSTATUS(status));
+	if((e>(v->len))){
+		(e=(v->len));
 	};
-	return _6e5d_c2prim_lib_fromI64(-1);
+	if(((s>=(v->len))||(e<s))){
+		(s=0);
+		(e=s);
+	};
+	auto size_t copylen = (e-s);
+	auto size_t copyend = (o+copylen);
+	if((copyend>(d->len))){
+		_6e5d_vec_lib_resize(d,copyend);
+	};
+	auto void (*ps) = ((void (*))(((uint8_t (*))(v->p))+(s*(v->size))));
+	auto void (*pd) = ((void (*))(((uint8_t (*))(d->p))+(o*(d->size))));
+	auto bool isbytes = (5==_6e5d_c2prim_lib_tid0(src));
+	if(isbytes){
+		if((5!=_6e5d_c2prim_lib_tid0(dst))){
+			fprintf(stderr,"ucopy:notbytes""\x0a""");
+			abort();
+		};
+		memmove(pd,ps,copylen);
+	}else if(true){
+		if((6!=_6e5d_c2prim_lib_tid0(dst))){
+			fprintf(stderr,"ucopy:notlist""\x0a""");
+			abort();
+		};
+		memmove(pd,ps,(copylen*((size_t )(&((_6e5d_c2r_lib_Object (*(*)))0)[1]))));
+		auto _6e5d_c2r_lib_Object (*(*p)) = ps;
+		for(auto size_t idx = 0;(idx<copylen);(idx+=1)){
+			_6e5d_c2r_lib_incref((*p));
+			(p+=1);
+		};
+	};
+	_6e5d_c2r_lib_chk((&src));
+	_6e5d_c2r_lib_chk((&dst));
+	return _6e5d_c2prim_lib_fromU64(copyend);
 }
