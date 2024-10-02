@@ -452,6 +452,12 @@ static _6e5d_c2r_lib_Object (*addsym(_6e5d_c2r_lib_Object (*ns),_6e5d_c2r_lib_Ob
 		_6e5d_c2prim_lib_abort();
 	};
 	_6e5d_c2prim_lib_assign((&fullsym),_6e5d_c1str_lib_join(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),3),0,path2c(gid)),1,_6e5d_c2prim_lib_fromBuf("_",1)),2,real)));
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(_6e5d_c2prim_lib_getItem(ns,alias))))))){
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("warn:overwriting",16));
+		fprintf(stderr," ");
+		_6e5d_c2prim_lib_printobj(stderr,alias);
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+	};
 	_6e5d_c2prim_lib_setItem(ns,alias,fullsym);
 	(_return=fullsym);
 	_6e5d_c2r_lib_incref(_return);
@@ -499,9 +505,23 @@ static _6e5d_c2r_lib_Object (*include(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_
 		_6e5d_c2r_lib_decref(sym);
 		return _return;
 	};
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((6==_6e5d_c2prim_lib_tid(_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(2)))))))){
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("badinclude",10));
+		fprintf(stderr," ");
+		_6e5d_c2prim_lib_printobj(stderr,l);
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+		_6e5d_c2prim_lib_abort();
+	};
 	_6e5d_c2prim_lib_assign((&importlist),_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(2)));
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(4),_6e5d_c2prim_lib_length(l)))){
 		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(out,_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_listSet(_6e5d_c2prim_lib_resizeList(_6e5d_c2prim_lib_listInit(),2),0,_6e5d_c2prim_lib_fromBuf("include",7)),1,path)));
+		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((6==_6e5d_c2prim_lib_tid(_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(3)))))))){
+			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("badinclude",10));
+			fprintf(stderr," ");
+			_6e5d_c2prim_lib_printobj(stderr,l);
+			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+			_6e5d_c2prim_lib_abort();
+		};
 		_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(importlist,_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(3))));
 	};
 	_6e5d_c2prim_lib_assign((&idx),NULL);
@@ -740,7 +760,9 @@ static _6e5d_c2r_lib_Object (*proc(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Obj
 		};
 		_6e5d_c2prim_lib_assign((&ll),_6e5d_c2prim_lib_getItem(l,idx));
 		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((5==_6e5d_c2prim_lib_tid(ll))))||_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(ll))))))){
-			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("'c0p:emptyblock",15));
+			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("c0p:emptyblock",14));
+			fprintf(stderr," ");
+			_6e5d_c2prim_lib_printobj(stderr,ll);
 			_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 			_6e5d_c2prim_lib_abort();
 		};
@@ -748,7 +770,7 @@ static _6e5d_c2r_lib_Object (*proc(_6e5d_c2r_lib_Object (*src),_6e5d_c2r_lib_Obj
 		_6e5d_c2prim_lib_assign((&first),_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(0)));
 		if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(first,_6e5d_c2prim_lib_fromBuf("path",4)))){
 			if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_gt(_6e5d_c2prim_lib_fromU64(2),llen))){
-				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("'c0p:badpath",12));
+				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("c0p:badpath",11));
 				fprintf(stderr," ");
 				_6e5d_c2prim_lib_printobj(stderr,ll);
 				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));

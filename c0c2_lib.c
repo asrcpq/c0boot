@@ -474,6 +474,13 @@ static _6e5d_c2r_lib_Object (*trybi(_6e5d_c2r_lib_Object (*out),_6e5d_c2r_lib_Ob
 			if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(idx,_6e5d_c2prim_lib_fromU64(0)))){
 				continue;
 			};
+			if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((6==_6e5d_c2prim_lib_tid(ll)))))||_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_ne(_6e5d_c2prim_lib_fromU64(2),_6e5d_c2prim_lib_length(ll)))||_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lnot(_6e5d_c2prim_lib_fromBool((5==_6e5d_c2prim_lib_tid(_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(0))))))))))){
+				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("sval",4));
+				fprintf(stderr," ");
+				_6e5d_c2prim_lib_printobj(stderr,ll);
+				_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+				_6e5d_c2prim_lib_abort();
+			};
 			_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(out,_6e5d_c2prim_lib_fromU64(46)));
 			_6e5d_c2r_lib_check0(_6e5d_c1str_lib_append(out,_6e5d_c2prim_lib_getItem(ll,_6e5d_c2prim_lib_fromU64(0))));
 			_6e5d_c2r_lib_check0(_6e5d_c1str_lib_push(out,_6e5d_c2prim_lib_fromU64(61)));
@@ -862,6 +869,13 @@ static _6e5d_c2r_lib_Object (*translateFn(_6e5d_c2r_lib_Object (*l),_6e5d_c2r_li
 	auto _6e5d_c2r_lib_Object (*b) = NULL;
 	auto _6e5d_c2r_lib_Object (*idx) = NULL;
 	auto _6e5d_c2r_lib_Object (*binding) = NULL;
+	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_lt(_6e5d_c2prim_lib_length(l),_6e5d_c2prim_lib_fromU64(4)))){
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("shortfunc",9));
+		fprintf(stderr," ");
+		_6e5d_c2prim_lib_printobj(stderr,l);
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+		_6e5d_c2prim_lib_abort();
+	};
 	_6e5d_c2prim_lib_assign((&bindings),_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(3)));
 	_6e5d_c2prim_lib_assign((&name),_6e5d_c2prim_lib_getItem(l,_6e5d_c2prim_lib_fromU64(1)));
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_eq(_6e5d_c2prim_lib_fromU64(0),_6e5d_c2prim_lib_length(name)))){

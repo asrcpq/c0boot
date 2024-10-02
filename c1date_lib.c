@@ -147,6 +147,7 @@ void _6e5d_c2prim_lib_assign(_6e5d_c2r_lib_Object (*(*dst)),_6e5d_c2r_lib_Object
 _6e5d_c2r_lib_Object (*_6e5d_c2prim_lib_abort());
 void _6e5d_c0date_lib_usleep(uint64_t u);
 uint64_t _6e5d_c0date_lib_now();
+uint64_t _6e5d_c0date_lib_fromymd(uint64_t ymd);
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_now());
 _6e5d_c2r_lib_Object (*_6e5d_c1date_lib_sleep(_6e5d_c2r_lib_Object (*ou)));
 static _6e5d_c2r_lib_Object (*fmttime2(uint64_t u,char (*fmt)));
