@@ -202,14 +202,10 @@ _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_ls2(_6e5d_c2r_lib_Object (*d)));
 _6e5d_c2r_lib_Object (*_6e5d_c1path_c1_walkfiles(_6e5d_c2r_lib_Object (*d)));
 _6e5d_c2r_lib_Object (*_6e5d_rmake_lib_runmake(_6e5d_c2r_lib_Object (*paths)));
 _6e5d_c2r_lib_Object (*_6e5d_rmake_lib_dirmake(_6e5d_c2r_lib_Object (*paths)));
-int main(int _c1argc,char (*(*_c1argv)));
-int main(int _c1argc,char (*(*_c1argv))){
-	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
+static _6e5d_c2r_lib_Object (*c1Main(_6e5d_c2r_lib_Object (*args)));
+int main(int argc,char (*(*argv)));
+static _6e5d_c2r_lib_Object (*c1Main(_6e5d_c2r_lib_Object (*args))){
 	_6e5d_c2r_lib_incref(args);
-	_6e5d_c2prim_lib_resizeList(args,((size_t )_c1argc));
-	for(auto size_t idx = 0;(idx<_c1argc);(idx+=1)){
-		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(_c1argv[idx],strlen(_c1argv[idx])));
-	};
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
 	((void )_return);
 	auto _6e5d_c2r_lib_Object (*paths) = NULL;
@@ -245,4 +241,13 @@ int main(int _c1argc,char (*(*_c1argv))){
 	_6e5d_c2r_lib_decref(ismk);
 	_6e5d_c2r_lib_decref(idx);
 	_6e5d_c2r_lib_decref(arg);
+	return NULL;
+}
+int main(int argc,char (*(*argv))){
+	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
+	_6e5d_c2prim_lib_resizeList(args,argc);
+	for(auto size_t idx = 0;(idx<argc);(idx+=1)){
+		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(argv[idx],strlen(argv[idx])));
+	};
+	c1Main(args);
 }

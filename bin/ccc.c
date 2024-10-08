@@ -190,7 +190,8 @@ _6e5d_c2r_lib_Object (*_6e5d_c0p_lib_c0p(_6e5d_c2r_lib_Object (*path),_6e5d_c2r_
 _6e5d_c2r_lib_Object (*_6e5d_c1c0_lib_c1c0(_6e5d_c2r_lib_Object (*blocks)));
 _6e5d_c2r_lib_Object (*_6e5d_c0c2_lib_c0c2(_6e5d_c2r_lib_Object (*c0),_6e5d_c2r_lib_Object (*cfile),_6e5d_c2r_lib_Object (*depfile)));
 static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src)));
-int main(int _c1argc,char (*(*_c1argv)));
+static _6e5d_c2r_lib_Object (*c1Main(_6e5d_c2r_lib_Object (*args)));
+int main(int argc,char (*(*argv)));
 static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src))){
 	_6e5d_c2r_lib_incref(src);
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
@@ -210,17 +211,9 @@ static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src))){
 	_6e5d_c2prim_lib_printobj(stderr,out);
 	_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 	if(_6e5d_c2prim_lib_toBool(_6e5d_c2prim_lib_fromBool((0==_6e5d_c2prim_lib_tid(out))))){
-		(_return=_6e5d_c2prim_lib_fromBuf("/dev/null",9));
-		_6e5d_c2r_lib_incref(_return);
-		_6e5d_c2r_lib_decref(src);
-		_6e5d_c2r_lib_decref(l);
-		_6e5d_c2r_lib_decref(out);
-		_6e5d_c2r_lib_decref(ok);
-		_6e5d_c2r_lib_decref(path);
-		_6e5d_c2r_lib_decref(cfile);
-		_6e5d_c2r_lib_decref(depfile);
-		_6e5d_c2r_lib_deconly(_return);
-		return _return;
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("no_output",9));
+		_6e5d_c2prim_lib_printobj(stderr,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
+		_6e5d_c2prim_lib_abort();
 	};
 	_6e5d_c2prim_lib_assign((&out),_6e5d_c1path_c1_rel(_6e5d_c1path_c1_parent(src),out));
 	_6e5d_c2prim_lib_assign((&ok),_6e5d_c1path_c1_pmkdir(_6e5d_c1path_c1_parent(out)));
@@ -253,13 +246,8 @@ static _6e5d_c2r_lib_Object (*run(_6e5d_c2r_lib_Object (*src))){
 	_6e5d_c2r_lib_decref(depfile);
 	return NULL;
 }
-int main(int _c1argc,char (*(*_c1argv))){
-	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
+static _6e5d_c2r_lib_Object (*c1Main(_6e5d_c2r_lib_Object (*args))){
 	_6e5d_c2r_lib_incref(args);
-	_6e5d_c2prim_lib_resizeList(args,((size_t )_c1argc));
-	for(auto size_t idx = 0;(idx<_c1argc);(idx+=1)){
-		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(_c1argv[idx],strlen(_c1argv[idx])));
-	};
 	auto _6e5d_c2r_lib_Object (*_return) = NULL;
 	((void )_return);
 	auto _6e5d_c2r_lib_Object (*src) = NULL;
@@ -268,4 +256,13 @@ int main(int _c1argc,char (*(*_c1argv))){
 	_6e5d_c2prim_lib_printobj(stdout,_6e5d_c2prim_lib_fromBuf("""\x0a""",1));
 	_6e5d_c2r_lib_decref(args);
 	_6e5d_c2r_lib_decref(src);
+	return NULL;
+}
+int main(int argc,char (*(*argv))){
+	auto _6e5d_c2r_lib_Object (*args) = _6e5d_c2prim_lib_listInit();
+	_6e5d_c2prim_lib_resizeList(args,argc);
+	for(auto size_t idx = 0;(idx<argc);(idx+=1)){
+		_6e5d_c2prim_lib_listSet(args,idx,_6e5d_c2prim_lib_fromBuf(argv[idx],strlen(argv[idx])));
+	};
+	c1Main(args);
 }
